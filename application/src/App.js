@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 
+import Nav from "./components/nav";
+
 function App() {
   return (
-    <div>
-    </div>
+    <Nav />
   );
 }
 

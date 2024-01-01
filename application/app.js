@@ -3,9 +3,9 @@ const app = express();
 
 require("dotenv").config();
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
-const root = require("../backend/routes/root");
+const root = require("./server/routes/root");
 
 app.use("/", root);
 
