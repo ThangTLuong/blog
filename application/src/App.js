@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import Nav from "./components/nav";
-import "../../application/server/static/stylesheets/nav.css"
+import "./App.css";
 
 function App() {
   return (

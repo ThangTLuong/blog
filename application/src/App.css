@@ -1,0 +1,52 @@
+nav[id="navbar"] {
+  background-color: rgb(165, 165, 165);
+  height: 80px;
+  border-radius: 0 0 5px 5px;
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+nav div {
+  height: 80%;
+  width: 100%;
+}
+
+.nav-left, .nav-right {
+  
+}
+
+.nav-left, .nav-right, .nav-fill {
+  text-align: center;
+  line-height: 5em;
+  height: 100%;
+}
+
+.nav-left {
+  width: 20%;
+}
+
+.nav-right {
+  display: flex;
+  width: 40%;
+}
+
+.nav-fill {
+  display: flex;
+}
+
+#right-option {
+  height: 100%;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.center-align {
+  height: 45px;
+  margin-top: 1rem;
+}
+
+.nav-submit {
+  background-color: rgb(207, 175, 70);
+}
