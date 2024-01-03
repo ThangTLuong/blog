@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 function Nav() {
-  let auth = false;
+  const [auth, setAuth] = useState(false);
 
   return (
     <nav id="navbar">
       <div class="nav-left">
-        <a href="/home">home</a>
+        <a href="/">home</a>
       </div>
       <div class="nav-fill">
         <input class="form-control me-2 center-align" type="search" placeholder="Search" aria-label="Search" />

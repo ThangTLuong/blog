@@ -34,7 +34,7 @@ nav div {
   display: flex;
 }
 
-#right-option {
+.right-option {
   height: 100%;
 }
 
