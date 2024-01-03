@@ -4,12 +4,11 @@ body {
   margin: 0;
 }
 
-#main-section {
-  background-color: rgb(100,100,100);
-  margin-top: 5em;
+.center {
+  margin-top: 1em;
 }
 
-.center {
+.form-center {
   padding: 1em;
   width: 30em;
   margin: auto;
@@ -22,4 +21,14 @@ body {
 .divider {
   border-top: 3px solid rgb(255, 90, 90);
   border-radius: 5px;
+}
+
+.form {
+  background-color: rgb(100,100,100);
+  margin-top: 5em;
+}
+
+.login-form {
+  display: flex;
+  flex-flow: column;
 }

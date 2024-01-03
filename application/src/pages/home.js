@@ -3,7 +3,7 @@ import React from "react";
 function Home() {
   return (
     <div>
-      <section id="main-section" class="center round-edges">
+      <section id="main-section" class="form form-center round-edges ">
         <h1>Thang Luong</h1>
         <div class="divider"></div>
         <p>I am an aspiring Software Engineer dipping my toes into Web Development.</p>
