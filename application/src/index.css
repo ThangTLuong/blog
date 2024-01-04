@@ -33,7 +33,7 @@ body {
   margin-top: 5em;
 }
 
-.login-form {
+.login-form, .register-form {
   display: flex;
   flex-flow: column;
 }
@@ -51,9 +51,9 @@ nav div {
   width: 100%;
 }
 
-.nav-left, .nav-right {
+/* .nav-left, .nav-right {
   
-}
+} */
 
 .nav-left, .nav-right, .nav-fill {
   text-align: center;

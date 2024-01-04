@@ -13,7 +13,7 @@ function Login() {
             <input type="password" className="form-control" id="floatingPassword" placeholder="Password" />
             <label for="floatingPassword">Password</label>
           </div>
-          <input className="btn btn-primary center" type="submit" value="Submit" />
+          <input className="btn btn-primary center" type="submit" value="Login" />
         </div>
       </form>
     </div>
