@@ -13,9 +13,9 @@ const profile = require("./server/routes/profile");
 
 app.use("/", root);
 app.use("/registration", register);
-app.use("/login", login);
-app.use("/upload", upload);
-app.use("/profile", profile);
+// app.use("/login", login);
+// app.use("/upload", upload);
+// app.use("/profile", profile);
 
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}`);
