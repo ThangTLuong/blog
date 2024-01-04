@@ -3,17 +3,17 @@ import React from "react";
 function Login() {
   return (
     <div>
-      <form class="form form-center round-edges">
-        <div class="login-form">
-          <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" />
+      <form className="form form-center round-edges">
+        <div className="login-form">
+          <div className="form-floating mb-3">
+            <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com" />
             <label for="floatingInput">Email address</label>
           </div>
-          <div class="form-floating">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" />
+          <div className="form-floating">
+            <input type="password" className="form-control" id="floatingPassword" placeholder="Password" />
             <label for="floatingPassword">Password</label>
           </div>
-          <input class="btn btn-primary center" type="submit" value="Submit" />
+          <input className="btn btn-primary center" type="submit" value="Submit" />
         </div>
       </form>
     </div>

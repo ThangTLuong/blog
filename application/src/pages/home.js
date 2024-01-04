@@ -4,7 +4,7 @@ function Home() {
   return (
     <div>
       <section id="main-section" className="form form-center round-edges">
-        <h1 className="text-center text-green-400">Thang Luong</h1> 
+        <h1>Thang Luong</h1> 
         <div className="divider"></div>
         <p>I am an aspiring Software Engineer dipping my toes into Web Development.</p>
         <ul>
