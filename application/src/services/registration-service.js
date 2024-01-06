@@ -1,7 +1,7 @@
 function registration(state) {
   const { email, username, password, rePassword } = state;
 
-  fetch("/registration", {
+  fetch("http://localhost:3001/registration", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -17,3 +17,5 @@ function registration(state) {
     }
   });
 }
+
+export { registration };

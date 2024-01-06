@@ -6,7 +6,6 @@ const {
 module.exports = {
   newUser: (req, res) => {
     const { username, email, password, rePassword } = req.body;
-    let userData;
 
     bcrypt
       .genSalt(10)
@@ -17,6 +16,9 @@ module.exports = {
           email,
           password: hashedPassword,
         });
+      })
+      .then(() => {
+        res.sendStatus(201);
       })
       .catch((err) => {
         res.status(500).send(err.message);
