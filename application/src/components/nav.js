@@ -2,6 +2,20 @@ import React, { useEffect, useState } from 'react';
 
 function Nav() {
   const [auth, setAuth] = useState(false);
+  const [username, setUsername] = useState("");
+
+  useEffect(() => {
+    fetch("/session-check")
+      .then((res) => {
+        if (res.status === 200) {
+          setAuth(true);
+          res.json()
+            .then((data) => {
+              setUsername(data.username);
+            });
+        }
+      });
+  }, []);
 
   return (
     <nav id="navbar">
@@ -20,7 +34,7 @@ function Nav() {
               <a href="/upload">Upload</a>
             </div>
             <div id="profile" className="right-option">
-              <a href="/profile">Profile</a>
+              <a href="/profile">{username}</a>
             </div>
           </>
         ) : (

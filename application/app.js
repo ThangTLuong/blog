@@ -4,6 +4,7 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const cors = require('cors');
+const isAuth = require("./server/middleware/is-auth");
 
 require("dotenv").config();
 
@@ -31,12 +32,14 @@ app.use(
 const root = require("./server/routes/root");
 const register = require("./server/routes/register");
 const login = require("./server/routes/login");
+const sessionCheck = require("./server/routes/session-check");
 const upload = require("./server/routes/upload");
 const profile = require("./server/routes/profile");
 
 app.use("/", root);
 app.use("/registration", register);
-// app.use("/login", login);
+app.use("/login", login);
+app.use("/session-check", isAuth, sessionCheck);
 // app.use("/upload", upload);
 // app.use("/profile", profile);
 

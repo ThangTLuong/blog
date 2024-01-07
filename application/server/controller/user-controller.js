@@ -3,6 +3,8 @@ const {
   models: { User },
 } = require("../models");
 
+const auth = require("../middleware/auth-login");
+
 module.exports = {
   newUser: (req, res) => {
     const { username, email, password, rePassword } = req.body;
@@ -23,6 +25,10 @@ module.exports = {
       .catch((err) => {
         res.status(500).send(err.message);
         console.log(err);
-      })
+      });
+  },
+
+  login: (req, res) => {
+    auth(req, res);
   }
 }
