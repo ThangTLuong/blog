@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 
 function Nav() {
-  const [auth, setAuth] = useState(false);
+  const [auth, setAuth] = useState(() => {
+    return false;
+  });
   const [username, setUsername] = useState("");
 
   useEffect(() => {
@@ -15,7 +17,17 @@ function Nav() {
             });
         }
       });
-  }, []);
+  }, [auth]);
+
+  const handleLogout = () => {
+    fetch("/logout")
+      .then((res) => {
+        window.location.replace("/");
+      })
+      .catch((err) => {
+        //
+      });
+  }
 
   return (
     <nav id="navbar">
@@ -40,7 +52,7 @@ function Nav() {
                   <li><a className="dropdown-item leading-8" href="/profile">Profile</a></li>
                   <li><a className="dropdown-item leading-8" href="/settings">Settings</a></li>
                   <li><hr className="dropdown-divider my-1" /></li>
-                  <li><a className="dropdown-item leading-8" href="/logout">Logout</a></li>
+                  <li><a className="dropdown-item leading-8" href="/" onClick={handleLogout}>Logout</a></li>
                 </ul>
               </div>
             </div>
