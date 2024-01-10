@@ -1,6 +1,5 @@
 import React from "react";
 import { login } from "../services/login-service";
-import { useNavigate } from "react-router-dom";
 
 class Login extends React.Component {
   constructor(props) {

@@ -11,6 +11,7 @@ body {
 
 .center {
   margin-top: 1em;
+  margin-left: 1em;
 }
 
 .form-center {
@@ -90,3 +91,21 @@ nav div {
 .nav-submit {
   background-color: rgb(207, 175, 70);
 }
+
+.dropdown-menu {
+  display: none;
+}
+
+.btn-group:hover .dropdown-menu {
+  display: block;
+  top: 2.5em;
+}
+
+#upload, #profile {
+  width: 50%;
+}
+
+.border-radius-5 {
+  border-radius: 5px;
+}
+ 

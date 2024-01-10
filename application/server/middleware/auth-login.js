@@ -23,6 +23,7 @@ const loginValidation = (req, res) => {
     })
     .catch((err) => {
       res.sendStatus(500);
+      console.log(err);
     })
 }
 

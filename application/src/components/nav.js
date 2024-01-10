@@ -33,8 +33,16 @@ function Nav() {
             <div id="upload" className="right-option">
               <a href="/upload">Upload</a>
             </div>
-            <div id="profile" className="right-option">
-              <a href="/profile">{username}</a>
+            <div id="profile" className='right-option'>
+              <div className="btn-group !h-2/4 d-flex w-20 center justify-center border-radius-5">
+                <button type="button" className="btn btn-danger dropdown-toggle">{username}</button>
+                <ul className="dropdown-menu">
+                  <li><a className="dropdown-item leading-8" href="/profile">Profile</a></li>
+                  <li><a className="dropdown-item leading-8" href="/settings">Settings</a></li>
+                  <li><hr className="dropdown-divider my-1" /></li>
+                  <li><a className="dropdown-item leading-8" href="/logout">Logout</a></li>
+                </ul>
+              </div>
             </div>
           </>
         ) : (
