@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function Nav() {
   const [auth, setAuth] = useState(() => {
@@ -49,7 +50,7 @@ function Nav() {
               <div className="btn-group !h-2/4 d-flex w-20 center justify-center border-radius-5">
                 <button type="button" className="btn btn-danger dropdown-toggle">{username}</button>
                 <ul className="dropdown-menu">
-                  <li><a className="dropdown-item leading-8" href="/profile">Profile</a></li>
+                  <li><a className="dropdown-item leading-8" href={`/profile/${username}`}>Profile</a></li>
                   <li><a className="dropdown-item leading-8" href="/settings">Settings</a></li>
                   <li><hr className="dropdown-divider my-1" /></li>
                   <li><a className="dropdown-item leading-8" href="/" onClick={handleLogout}>Logout</a></li>

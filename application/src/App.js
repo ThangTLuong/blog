@@ -20,7 +20,7 @@ function App() {
           <Route path="/registration" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/upload" element={<Upload />} /> 
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile/:username" element={<Profile />} />
           <Route path="/logout" element={<ProtectedRoute element={Home} />} />
         </Routes>
       </Router>
