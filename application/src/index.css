@@ -191,7 +191,7 @@ nav div {
     transform: translateY(0);
   }
   to {
-    transform: translateY(calc(-200px * var(--distance-factor)));
+    transform: translateY(calc(-50px * var(--distance-factor)));
   }
 }
 
