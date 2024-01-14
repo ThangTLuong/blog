@@ -90,3 +90,14 @@ nav div {
 .nav-submit {
   background-color: rgb(207, 175, 70);
 }
+
+#strengthDiv{
+  display: none;
+}
+
+#strengthDivBar{
+  display: none;
+  background: red;
+  visibility: visible;
+  width: 33%;
+}
