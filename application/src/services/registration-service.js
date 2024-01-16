@@ -10,9 +10,9 @@ function registration(state) {
   }).then((data) => {
     if (data.status === 201) {
       window.location.replace("/login");
-    } else if (data.status === 500) {
+    } else if (data.status === 409) {
       alert("Email already exists");
-    } else {
+    } else if (data.status === 500){
       //
     }
   });
