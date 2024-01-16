@@ -15,14 +15,13 @@ jobs:
         with:
           node-version: '20.6.0'
 
-      - name: Navigate to Application Directory
-        run: cd application
-
       - name: Install Dependencies
         run: npm install
+        working-directory: application
 
       - name: Build Frontend
         run: npm run build
+        working-directory: application
 
   test:
     runs-on: ubuntu-latest
