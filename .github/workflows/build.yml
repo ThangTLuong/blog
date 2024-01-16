@@ -16,9 +16,8 @@ jobs:
           node-version: '20.6.0'
 
       - name: Install Dependencies
-        run: 
-          cd application
-          npm install
+        run: npm install
+        working-directory: application
 
       - name: Build Frontend
         run: npm run build
