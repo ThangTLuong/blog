@@ -119,3 +119,95 @@ nav div {
 .border-radius-5 {
   border-radius: 5px;
 }
+
+.upload-options-group {
+  width: 80px;
+  height: 80px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 50px;
+  border-radius: 50%;
+  background-color: rgb(0, 0, 0);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+#dropdown-toggle-icon {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s ease;
+}
+
+.dropdown-toggle {
+  position: relative;
+  display: inline-block;
+}
+
+#dropdown-toggle-icon:hover {
+  transform: rotate(-45deg);
+}
+
+.dropdown-toggle:hover .upload-dropdown-menu {
+  display: block;
+}
+
+.upload-dropdown-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: none;
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  background-color: transparent;
+}
+
+.dropdown-item-icon {
+  width: 80%;
+  height: 80%;
+  margin-left: 7px;
+  margin-bottom: 10px;
+  border-radius: 50%;
+  background-color: rgb(0, 0, 0);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.upload-dropdown-item {
+  opacity: 0;
+  position: relative;
+}
+
+.upload-dropdown-item:nth-child(1) {
+  animation: slideOut 1s ease forwards, fadeIn 0.5s ease forwards;
+  --distance-factor: 0.4;
+}
+
+.upload-dropdown-item:nth-child(2) {
+  animation: slideOut 1s ease forwards 0.2s, fadeIn 0.5s ease forwards 0.2s;
+  --distance-factor: 0.3;
+}
+
+.upload-dropdown-item:nth-child(3) {
+  animation: slideOut 1s ease forwards 0.4s, fadeIn 0.5s ease forwards 0.4s;
+  --distance-factor: 0.2;
+}
+
+.upload-dropdown-item:nth-child(4) {
+  animation: slideOut 1s ease forwards 0.6s, fadeIn 0.5s ease forwards 0.6s;
+  --distance-factor: 0.1;
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(calc(-50px * var(--distance-factor)));
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}

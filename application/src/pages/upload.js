@@ -1,8 +1,12 @@
 import React from "react";
 
+import UploadOptions from "../components/upload-options";
+
 function Upload() {
   return (
-    <div></div>
+    <div>
+      <UploadOptions />
+    </div>
   );
 }
 
