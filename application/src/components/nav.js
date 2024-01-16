@@ -13,7 +13,7 @@ function Nav() {
           setAuth(true);
           res.json()
             .then((data) => {
-              setUsername(data.username);
+              setUsername(data);
             });
         }
       });

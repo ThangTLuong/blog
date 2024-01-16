@@ -34,16 +34,16 @@ const register = require("./server/routes/register");
 const login = require("./server/routes/login");
 const sessionCheck = require("./server/routes/session-check");
 const logout = require("./server/routes/logout");
-// const upload = require("./server/routes/upload");
-// const profile = require("./server/routes/profile");
+const upload = require("./server/routes/upload");
+const profile = require("./server/routes/profile");
 
 app.use("/", root);
 app.use("/registration", register);
 app.use("/login", login);
-app.use("/session-check", isAuth, sessionCheck);
+app.use("/session-check", sessionCheck);
 app.use("/logout", logout)
-// app.use("/upload", isAuth, upload);
-// app.use("/profile", isAuth, profile);
+app.use("/upload", upload);
+app.use("/profile", profile);
 
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}`);

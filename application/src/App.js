@@ -18,8 +18,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/registration" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/upload" element={<rotectedRoute element={Upload} />} /> 
-        <Route path="/profile/:username" element={<rotectedRoute element={Profile} />} />
+        <Route path="/upload" element={<ProtectedRoute element={Upload} />} /> 
+        <Route path="/profile/:username" element={<ProtectedRoute element={Profile} />} />
         <Route path="/logout" element={<ProtectedRoute element={Home} />} />
       </Routes>
     </Router>

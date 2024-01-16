@@ -11,7 +11,7 @@ const ProtectedRoute = ({ element: Component, ...rest }) => {
       .then((res) => {
         if (res.status === 401) {
           setAuth(false);
-          alert("Permission Denied\nPlease log in");
+          // alert("Permission Denied\nPlease log in");
           navigate("/");
         } else {
           setAuth(true);
