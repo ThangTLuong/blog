@@ -33,9 +33,9 @@ jobs:
     steps:
       - name: Run Development Servers
         run: |
-          npm run dev:backend &
+          npm run dev:backend
           sleep 5
-          npm run dev:frontend &
+          npm run dev:frontend
           sleep 5
         working-directory: application
 
