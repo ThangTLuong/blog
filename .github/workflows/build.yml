@@ -30,21 +30,16 @@ jobs:
 
     needs: build
 
-    defaults:
-      run:
-        working-directory: application
-
     steps:
       - name: Run Development Servers
         run: |
           npm run dev:backend &
-
           sleep 5
-
           npm run dev:frontend &
-
           sleep 5
+        working-directory: application
 
       - name: Test Web App
         run: |
           npm test
+        working-directory: application
