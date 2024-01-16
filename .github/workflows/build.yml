@@ -30,6 +30,10 @@ jobs:
 
     needs: build
 
+    defaults:
+      run:
+        working-directory: application
+
     steps:
       - name: Run Development Servers
         run: |
