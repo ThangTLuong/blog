@@ -4,6 +4,7 @@ const {
 } = require("../models");
 
 const auth = require("../middleware/auth-login");
+const status = require("../status");
 
 module.exports = {
   newUser: (req, res) => {
@@ -12,7 +13,7 @@ module.exports = {
     User.findOne({ where: { email }})
     .then((user) => {
       if (user) {
-        res.sendStatus(409);
+        status.Conflict(req, res);
       } else {
         bcrypt
           .genSalt(10)
@@ -25,11 +26,10 @@ module.exports = {
             });
           })
           .then(() => {
-            res.sendStatus(201);
+            status.Created(req, res);
           })
           .catch((err) => {
-            res.status(500).send(err.message);
-            console.log(err);
+            status.InternalServerError(req, res, err.message);
           })
         }
       });
