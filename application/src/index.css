@@ -252,8 +252,15 @@ nav div {
   width: 660px;
 }
 
-.empty-right-side {
+.right-options {
+  min-width: 15em;
+  max-width: 15em;
+}
 
+.empty-right-side {
+  min-width: 0px;
+  width: 100%;
+  max-width: 600px;
 }
 
 .main-section {

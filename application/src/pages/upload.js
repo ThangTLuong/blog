@@ -1,9 +1,9 @@
 import React from "react";
 
-import UploadOptions from "../components/upload-options";
-import LeftSection from "../components/left-section";
-import RightSection from "../components/right-section";
-import MainSection from "../components/main-section";
+import UploadOptions from "../components/upload/upload-options";
+import LeftSection from "../components/upload/left-section";
+import RightSection from "../components/upload/right-section";
+import MainSection from "../components/upload/main-section";
 
 function Upload() {
   return (

@@ -1,7 +1,9 @@
 import React from "react";
 
-import options from "../resources/options.png";
+import options from "../../resources/options.png";
 
+// Will have primary options such as upload an image, add text, etc.
+// The mostly used options
 function LeftSection() {
   return (
     <section className="left-section full-height">
