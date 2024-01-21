@@ -1,4 +1,5 @@
 import React from "react";
+import Tooltip from "../tooltip";
 
 import options from "../../resources/options.png";
 
@@ -11,46 +12,13 @@ function LeftSection() {
       <div className="left-options">
         <div className="flex flex-column">
           <div className="w-full p-2">
-            <div className="bg-black rounded-full">
-              <a href="/">
-                <img className="w-full h-full" src={options} alt="Option buttons" />
-              </a>
-            </div>
-          </div>
-          <div className="w-full p-2">
-            <div className="bg-black rounded-full">
-              <a href="/">
-                <img className="w-full h-full" src={options} alt="Option buttons" />
-              </a>
-            </div>
-          </div>
-          <div className="w-full p-2">
-            <div className="bg-black rounded-full">
-              <a href="/">
-                <img className="w-full h-full" src={options} alt="Option buttons" />
-              </a>
-            </div>
-          </div>
-          <div className="w-full p-2">
-            <div className="bg-black rounded-full">
-              <a href="/">
-                <img className="w-full h-full" src={options} alt="Option buttons" />
-              </a>
-            </div>
-          </div>
-          <div className="w-full p-2">
-            <div className="bg-black rounded-full">
-              <a href="/">
-                <img className="w-full h-full" src={options} alt="Option buttons" />
-              </a>
-            </div>
-          </div>
-          <div className="w-full p-2">
-            <div className="bg-black rounded-full">
-              <a href="/">
-                <img className="w-full h-full" src={options} alt="Option buttons" />
-              </a>
-            </div>
+            <Tooltip text={ "Yes" } direction={"left"}>
+              <div className="bg-black rounded-full">
+                <a href="/">
+                  <img className="w-full h-full" src={options} alt="Option buttons" />
+                </a>
+              </div>
+            </Tooltip>
           </div>
         </div>
       </div>
