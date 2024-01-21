@@ -94,6 +94,10 @@ nav div {
   width: 100%;
 }
 
+.full-height {
+  height: 100%;
+}
+
 .center-align {
   height: 45px;
   margin-top: 1rem;
@@ -221,4 +225,43 @@ nav div {
   to {
     opacity: 1;
   }
+}
+
+.left-section {
+  display: flex;
+  border-right: 2px solid gray;
+  background: linear-gradient(to right, rgb(55,55,55), gray);
+  width: 660px;
+}
+
+.left-options {
+  min-width: 5em;
+  max-width: 5em;
+}
+
+.empty-left-side {
+  min-width: 0px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.right-section {
+  display: flex;
+  border-left: 2px solid gray;
+  background: linear-gradient(to left, rgb(55,55,55), gray);
+  width: 660px;
+}
+
+.empty-right-side {
+
+}
+
+.main-section {
+  min-width: 600px;
+  max-width: 600px;
+}
+
+
+.display-section-group {
+  width: 100%;
 }
