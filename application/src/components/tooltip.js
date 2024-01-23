@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function getTooltipStyle (direction) {
+const getTooltipStyle = (direction) => {
   const spacing = 8;
 
   switch (direction) {
@@ -17,7 +17,7 @@ function getTooltipStyle (direction) {
   }
 }
 
-function Tooltip( { text, children, direction } ) {
+const Tooltip = ({ text, children, direction }) => {
   const [isVisible, setVisible] = useState(false);
 
   return (

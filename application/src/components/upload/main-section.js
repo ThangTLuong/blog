@@ -1,9 +1,11 @@
 import React from "react";
 
-function MainSection() {
+const MainSection = ({ addElements }) => {
   return (
     <section className="main-section full-width full-height">
-
+      {addElements.map((element, index) => (
+        <React.Fragment key={index}>{element}</React.Fragment>
+      ))}
     </section>
   );
 }

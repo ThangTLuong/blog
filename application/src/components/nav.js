@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-function Nav() {
+const Nav = () => {
   const [auth, setAuth] = useState(() => {
     return false;
   });

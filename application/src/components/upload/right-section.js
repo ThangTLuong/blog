@@ -4,7 +4,7 @@ import options from "../../resources/options.png";
 
 // Will have many different templates to help user get started with their posts
 // Also thinking of having presets right under or above the templates
-function RightSection() {
+const RightSection = () => {
   return (
     <section className="right-section full-height">
       <div className="right-options">
