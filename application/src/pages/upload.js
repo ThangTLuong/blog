@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Tooltip from "../components/tooltip";
-import { getElement } from "../components/upload/functionalities/post-container";
+import GetElement from "../components/post-container";
 
 import UploadOptions from "../components/upload/upload-options";
 import LeftSection from "../components/left-section";
@@ -55,114 +55,26 @@ const Upload = () => {
           }
         </LeftSection>
         <MainSection>
-          { getElement({ isTextVisible, isMediaVisible }) }
+          <GetElement 
+          isTextVisible={isTextVisible} 
+          isMediaVisible={isMediaVisible} 
+          postText={
+            <input type="text" className="post-text-area" />
+          } 
+          postMedia={[]} />
         </MainSection>
         <RightSection>
-          <div className="w-20 p-2">
-            <div className="bg-black rounded-full">
-              <a href="/">
-                <img className="w-full h-full" src={options} alt="Option buttons" />
-              </a>
-            </div>
-          </div>
-          <div className="w-20 p-2">
-            <div className="bg-black rounded-full">
-              <a href="/">
-                <img className="w-full h-full" src={options} alt="Option buttons" />
-              </a>
-            </div>
-          </div>
-          <div className="w-20 p-2">
-            <div className="bg-black rounded-full">
-              <a href="/">
-                <img className="w-full h-full" src={options} alt="Option buttons" />
-              </a>
-            </div>
-          </div>
-          <div className="w-20 p-2">
-            <div className="bg-black rounded-full">
-              <a href="/">
-                <img className="w-full h-full" src={options} alt="Option buttons" />
-              </a>
-            </div>
-          </div>
-          <div className="w-20 p-2">
-            <div className="bg-black rounded-full">
-              <a href="/">
-                <img className="w-full h-full" src={options} alt="Option buttons" />
-              </a>
-            </div>
-          </div>
-          <div className="w-20 p-2">
-            <div className="bg-black rounded-full">
-              <a href="/">
-                <img className="w-full h-full" src={options} alt="Option buttons" />
-              </a>
-            </div>
-          </div>
-          <div className="w-20 p-2">
-            <div className="bg-black rounded-full">
-              <a href="/">
-                <img className="w-full h-full" src={options} alt="Option buttons" />
-              </a>
-            </div>
-          </div>
-          <div className="w-20 p-2">
-            <div className="bg-black rounded-full">
-              <a href="/">
-                <img className="w-full h-full" src={options} alt="Option buttons" />
-              </a>
-            </div>
-          </div>
-          <div className="w-20 p-2">
-            <div className="bg-black rounded-full">
-              <a href="/">
-                <img className="w-full h-full" src={options} alt="Option buttons" />
-              </a>
-            </div>
-          </div>
-          <div className="w-20 p-2">
-            <div className="bg-black rounded-full">
-              <a href="/">
-                <img className="w-full h-full" src={options} alt="Option buttons" />
-              </a>
-            </div>
-          </div>
-          <div className="w-20 p-2">
-            <div className="bg-black rounded-full">
-              <a href="/">
-                <img className="w-full h-full" src={options} alt="Option buttons" />
-              </a>
-            </div>
-          </div>
-          <div className="w-20 p-2">
-            <div className="bg-black rounded-full">
-              <a href="/">
-                <img className="w-full h-full" src={options} alt="Option buttons" />
-              </a>
-            </div>
-          </div>
-          <div className="w-20 p-2">
-            <div className="bg-black rounded-full">
-              <a href="/">
-                <img className="w-full h-full" src={options} alt="Option buttons" />
-              </a>
-            </div>
-          </div>
-          <div className="w-20 p-2">
-            <div className="bg-black rounded-full">
-              <a href="/">
-                <img className="w-full h-full" src={options} alt="Option buttons" />
-              </a>
-            </div>
-          </div>
-          <div className="w-20 p-2">
-            <div className="bg-black rounded-full">
-              <a href="/">
-                <img className="w-full h-full" src={options} alt="Option buttons" />
-              </a>
-            </div>
-          </div>
+          { 
+            Array.from({ length: 12 }).map((_, index) => (
+              <div key={index} className="w-20 p-2">
+                <div className="bg-black rounded-full">
+                  <a href="/" key={index}>
+                    <img className="w-full h-full" src={options} alt={`Option button ${index}`} />
+                  </a>
+                </div>
+              </div>
+            ))
+          }
         </RightSection>
       </div>
       <UploadOptions />

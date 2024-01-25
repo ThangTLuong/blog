@@ -295,8 +295,14 @@ nav div {
   flex-direction: column;
 }
 
+.post-metadata, .post, .post-stats {
+  border: 1px solid rgba(179, 171, 255, 0.3);
+}
+
 .post-metadata {
-  /* height: 80px; */
+  padding: 5px;
+  padding-bottom: 2.5px;
+  border-bottom: 0;
 }
 
 .post-metadata-div {
@@ -304,8 +310,8 @@ nav div {
   background-color: cadetblue;
 }
 
-.post {
-  border: 2px solid rgba(52, 29, 255, 0.3);
+.post:not(:empty) {
+  padding: 5px;
 }
 
 .post-text {
@@ -313,14 +319,28 @@ nav div {
   background-color: aquamarine;
 }
 
+.post-text-area {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+}
+
 .post-media {
   height: 440px;
   background-color: bisque;
-  margin-top: 10px;
+}
+
+.post-text + .post-media {
+  margin-top: 5px;
+}
+
+.post-media + .post-text {
+  margin-bottom: 5px;
 }
 
 .post-stats {
-  border: 2px solid rgba(52, 29, 255, 0.3);
+  border-top: 0;
+  padding: 5px;
 }
 
 .post-stats-div {

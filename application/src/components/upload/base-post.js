@@ -12,7 +12,7 @@ const PostContainer = ({ children }) => {
 
 const PostMetadata = ({ children }) => {
   return (
-    <div className="post-metadata p-2 pb-1">
+    <div className="post-metadata">
       <div className="post-metadata-div">
         {children}
       </div>
@@ -22,7 +22,7 @@ const PostMetadata = ({ children }) => {
 
 const Post = ({ children }) => {
   return (
-    <div className="post p-2 pb-1">
+    <div className="post">
       {children}
     </div>
   );
@@ -46,7 +46,7 @@ const PostMedia = ({ children }) => {
 
 const PostStats = ({ children }) => {
   return (
-    <div className="post-stats p-2 pb-1 pt-1">
+    <div className="post-stats">
       <div className="post-stats-div">
         {children}
       </div>
