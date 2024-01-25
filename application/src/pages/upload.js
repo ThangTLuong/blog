@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Tooltip from "../components/tooltip";
+import { getElement } from "../components/upload/functionalities/post-container";
 
 import UploadOptions from "../components/upload/upload-options";
 import LeftSection from "../components/left-section";
@@ -8,106 +9,53 @@ import MainSection from "../components/main-section";
 
 import options from "../resources/options.png";
 
-import { PostContainer, PostMetadata, Post, PostText, PostMedia, PostStats } from "../components/upload/base-post";
-
-const Container = ({ children }) => {
+const LeftOptions = ({ toolTipText, icon, onClick }) => {
   return (
-    <PostContainer>
-      <PostMetadata />
-      <Post>
-        {children}
-      </Post>
-      <PostStats />
-    </PostContainer>
+    <div className="w-full p-2">
+      <Tooltip text={ toolTipText } direction={"left"}>
+        <div className="bg-black rounded-full" onClick={onClick}>
+          <img className="w-full h-full" src={icon} alt="Option buttons" />
+        </div>
+      </Tooltip>
+    </div>
   );
 }
 
 const Upload = () => {
-  const [addElements, setAddElements] = useState([]);
-  const [isTextAdded, setIsTextAdded] = useState(false);
-  const [isMediaAdded, setIsMediaAdded] = useState(false);
+  const [isTextVisible, setIsTextVisible] = useState(false);
+  const [isMediaVisible, setIsMediaVisible] = useState(false);
 
-  const onAddPostText = () => {
-    if (isMediaAdded) {
-      setAddElements([
-        <Container>
-          <PostText />
-          <PostMedia />
-        </Container>
-      ]);
-      setIsTextAdded(true);
-      setIsMediaAdded(true);
-    } else if (!isTextAdded) {
-      setAddElements([
-        ...addElements,
-        <Container>
-          <PostText />
-        </Container>
-      ]);
-      setIsTextAdded(true);
+  const handleOptionClick = (option) => {
+    if (option === "Text") {
+      setIsTextVisible(!isTextVisible);
+    } else if (option === "Media") {
+      setIsMediaVisible(!isMediaVisible);
     }
   };
 
-  const onAddPostMedia = () => {
-    if (isTextAdded) {
-      setAddElements([
-        <Container>
-          <PostText />
-          <PostMedia />
-        </Container>
-      ]);
-      setIsTextAdded(true);
-      setIsMediaAdded(true);
-    } else if (!isMediaAdded) {
-      setAddElements([
-        ...addElements,
-        <Container>
-          <PostMedia />
-        </Container>
-      ]);
-      setIsMediaAdded(true);
-    }
-  };
-
-  const onPostClear = () => {
-    setIsTextAdded(false);
-    setIsMediaAdded(false);
-    setAddElements([]);
+  const handleClearOptionClick = () => {
+    setIsTextVisible(false);
+    setIsMediaVisible(false);
   }
+
+  const optionsData = [
+    { toolTipText: "Text", icon: options, onClick: () => handleOptionClick("Text") },
+    { toolTipText: "Media", icon: options, onClick: () => handleOptionClick("Media") },
+    { toolTipText: "Clear", icon: options, onClick: handleClearOptionClick },
+  ];
 
   return (
     <div id="body">
       <div className="display-sections-group flex h-full w-full">
         <LeftSection>
-          <div className="w-full p-2">
-            <Tooltip text={ "Text" } direction={"left"}>
-              <div className="bg-black rounded-full" onClick={onAddPostText}>
-                <img className="w-full h-full" src={options} alt="Option buttons" />
-              </div>
-            </Tooltip>
-          </div>
-          <div className="w-full p-2">
-            <Tooltip text={ "Media" } direction={"left"}>
-              <div className="bg-black rounded-full" onClick={onAddPostMedia}>
-                <img className="w-full h-full" src={options} alt="Option buttons" />
-              </div>
-            </Tooltip>
-          </div>
-          <div className="w-full p-2">
-            <Tooltip text={ "Clear" } direction={"left"}>
-              <div className="bg-black rounded-full" onClick={onPostClear}>
-                <img className="w-full h-full" src={options} alt="Option buttons" />
-              </div>
-            </Tooltip>
-          </div>
+          {
+            optionsData.map((option, index) => (
+              <LeftOptions key={index} {...option} />
+            ))
+          }
         </LeftSection>
         <MainSection>
-          { addElements.map((element, index) => (
-            <React.Fragment key={index}>
-              {element}
-            </React.Fragment>
-          ))
-          }
+          { getElement({ isTextVisible, isMediaVisible }) }
         </MainSection>
         <RightSection>
           <div className="w-20 p-2">
