@@ -14,7 +14,9 @@ const Container = ({ children }) => {
   );
 }
 
-const GetElement = ({ isTextVisible, isMediaVisible, postText = null, postMedia = [] }) => {
+const GetElement = ({ isTextVisible, isMediaVisible, children }) => {
+  const [postText, postMedia] = React.Children.toArray(children);
+
   return (
     <Container>
       {isTextVisible && 
@@ -24,11 +26,7 @@ const GetElement = ({ isTextVisible, isMediaVisible, postText = null, postMedia 
       }
       {isMediaVisible && 
       <PostMedia>
-        { 
-          postMedia.map((imageName, index) => (
-            <img key={index} src={imageName} alt={`${index}`} />
-          ))
-        }
+        { postMedia }
       </PostMedia>
       }
     </Container>

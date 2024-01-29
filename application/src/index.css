@@ -7,7 +7,32 @@
 body {
   background-color: rgb(55,55,55);
   margin: 0;
-  overflow: hidden;
+  /* overflow: hidden; */
+}
+
+/* Display attributes */
+.full-width {
+  width: 100%;
+}
+
+.half-width {
+  width: 50%;
+}
+
+.third-width {
+  width: 33%;
+}
+
+.full-height {
+  height: 100%;
+}
+
+.half-height {
+  height: 50%;
+}
+
+.third-height {
+  height: 33%;
 }
 
 #root {
@@ -83,14 +108,6 @@ nav div {
 }
 
 .right-option {
-  height: 100%;
-}
-
-.full-width {
-  width: 100%;
-}
-
-.full-height {
   height: 100%;
 }
 
@@ -279,7 +296,7 @@ nav div {
   color: white;
   padding: 10px;
   border-radius: 4px;
-  z-index: 1;
+  z-index: 10;
   width: auto;
   opacity: 1;
   white-space: nowrap;
@@ -316,18 +333,32 @@ nav div {
 
 .post-text {
   height: 100px;
-  background-color: aquamarine;
 }
 
 .post-text-area {
   width: 100%;
   height: 100%;
+  color: #d6d6d6;
   background-color: transparent;
+  padding: 7px 10px;
+  font-size: 16px;
+  font-family: 'Courier New', Courier, monospace;
+  border-radius: 5px;
+  border-color: #bfbfbf;
+  outline: none;
+  resize: none;
+}
+
+.post-text-area:focus {
+  border-color: #4671EA;
+}
+
+.post-text-area::-webkit-scrollbar {
+  width: 0px;
 }
 
 .post-media {
   height: 440px;
-  background-color: bisque;
 }
 
 .post-text + .post-media {
@@ -347,4 +378,58 @@ nav div {
   justify-content: end;
   height: 45px;
   background-color: brown;
+}
+
+.upload-media-container, .upload-display {
+  @apply relative full-height full-width;
+}
+
+.overlay {
+  @apply absolute inset-0;
+}
+
+.upload-media, .upload-media-upload {
+  @apply overlay;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  border-radius: 5px;
+  border: 2px dashed #bfbfbf;
+  z-index: 2;
+}
+
+.upload-media-upload {
+  border: 2px solid #4671EA;
+}
+
+.upload-media-icon, .upload-media-upload-icon {
+  color: rgb(100,100,100);
+}
+
+.upload-media-upload-icon {
+  color: #5d83ec;
+}
+
+/* Image display */
+.media-display-container {
+  @apply full-height full-width;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+}
+
+.media-upload-display {
+  @apply full-height full-width;
+  object-fit: cover;
+  display: block;
+}
+
+.left-display-container,
+.right-display-container {
+  @apply full-height full-width;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  align-items: center;
 }
