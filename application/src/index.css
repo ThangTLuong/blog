@@ -115,6 +115,35 @@ nav div {
   display: flex;
 }
 
+.home-button-container {
+  @apply full-height full-width;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-button-overlay {
+  width: 70px;
+  height: 70px;
+}
+
+.home-button {
+  @apply full-height full-width;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-button-icon {
+  width: 50px;
+  height: 50px;
+}
+
+.home-button-overlay:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+}
+
 .right-option {
   height: 100%;
 }
@@ -255,9 +284,24 @@ nav div {
   width: 660px;
 }
 
-.left-options {
+.left-options-container {
   min-width: 5em;
   max-width: 5em;
+}
+
+.left-options {
+  background-color: rgb(80,80,80);
+  border-radius: 50px;
+}
+
+.left-options-icon {
+  @apply full-height full-width;
+  padding: 15px;
+}
+
+.left-options-overlay:hover {
+  background-color: rgba(255, 192, 203, 0.5);
+  border-radius: 50px;
 }
 
 .empty-left-side {
