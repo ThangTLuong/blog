@@ -6,9 +6,12 @@ const Dropzone = ({ className }) => {
   const [files, setFiles] = useState([]);
 
   const onDrop = useCallback((acceptedFiles) => {
+
+    const limitedAcceptance = acceptedFiles.slice(0, 4);
+
     setFiles((prevFiles) => [
       ...prevFiles,
-      ...acceptedFiles.map((file) => ({
+      ...limitedAcceptance.map((file) => ({
         ...file,
         preview: URL.createObjectURL(file),
       })),

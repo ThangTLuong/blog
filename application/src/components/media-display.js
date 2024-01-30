@@ -22,37 +22,39 @@ const MediaDisplay = ({ media }) => {
 
   return (
     <div className="media-display-container">
-      <LeftDisplayContainer
-        className={leftDisplay.length > 0 ? "half-width" : ""}
-      >
-        {leftDisplay.map((file, index) => (
-          <img
-            style={{ height: leftDisplay.length > 1 ? "50%" : "" }}
-            className="media-upload-display"
-            key={`left-display-${index}`}
-            alt={`display ${index}`}
-            src={file.preview}
-          />
-        ))}
-      </LeftDisplayContainer>
-
-      {!rightDisplay.length ? (
-        <></>
-      ) : (
-        <RightDisplayContainer
-          className={rightDisplay.length > 0 ? "half-width" : ""}
+      <div className="media-display">
+        <LeftDisplayContainer
+          className={leftDisplay.length > 0 ? "half-width" : ""}
         >
-          {rightDisplay.map((file, index) => (
+          {leftDisplay.map((file, index) => (
             <img
-              style={{ height: rightDisplay.length > 1 ? "50%" : "" }}
+              style={{ height: leftDisplay.length > 1 ? "50%" : "" }}
               className="media-upload-display"
-              key={`right-display-${index}`}
+              key={`left-display-${index}`}
               alt={`display ${index}`}
               src={file.preview}
             />
           ))}
-        </RightDisplayContainer>
-      )}
+        </LeftDisplayContainer>
+
+        {!rightDisplay.length ? (
+          <></>
+        ) : (
+          <RightDisplayContainer
+            className={rightDisplay.length > 0 ? "half-width" : ""}
+          >
+            {rightDisplay.map((file, index) => (
+              <img
+                style={{ height: rightDisplay.length > 1 ? "50%" : "" }}
+                className="media-upload-display"
+                key={`right-display-${index}`}
+                alt={`display ${index}`}
+                src={file.preview}
+              />
+            ))}
+          </RightDisplayContainer>
+        )}
+      </div>
     </div>
   );
 };
