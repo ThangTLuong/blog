@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
 import home from "../resources/home.png";
+import upload from "../resources/upload/upload.png";
+import avatar from "../resources/default avatar.jpg";
 
 const Nav = () => {
   const [auth, setAuth] = useState(() => {
@@ -33,13 +35,13 @@ const Nav = () => {
     <nav id="navbar">
       <div className="nav-left">
         <div className="home-button-container">
-          <div className="home-button-overlay">
-            <div className="home-button">
-              <a href="/">
+          <a href="/">
+            <div className="home-button-overlay">
+              <div className="home-button">
                 <img className="home-button-icon" src={home} alt="Home" />
-              </a>
+              </div>
             </div>
-          </div>
+          </a>
         </div>
       </div>
       <div className="nav-fill">
@@ -60,43 +62,40 @@ const Nav = () => {
         {auth ? (
           <>
             <div id="upload" className="right-option">
-              <a href="/upload">Upload</a>
+              <div className="nav-upload-container">
+                <a href="/upload">
+                  <div className="nav-upload-overlay">
+                    <img
+                      className="nav-upload-icon"
+                      src={upload}
+                      alt="Upload icon"
+                    />
+                  </div>
+                </a>
+              </div>
             </div>
             <div id="profile" className="right-option">
-              <div className="btn-group !h-2/4 d-flex w-20 center justify-center border-radius-5">
-                <button
-                  type="button"
-                  className="btn btn-danger dropdown-toggle"
-                >
-                  {username}
-                </button>
-                <ul className="dropdown-menu">
-                  <li>
-                    <a
-                      className="dropdown-item leading-8"
-                      href={`/profile/${username}`}
-                    >
-                      Profile
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item leading-8" href="/settings">
-                      Settings
-                    </a>
-                  </li>
-                  <li>
-                    <hr className="dropdown-divider my-1" />
-                  </li>
-                  <li>
-                    <a
-                      className="dropdown-item leading-8"
-                      href="/"
-                      onClick={handleLogout}
-                    >
+              <div className="nav-profile-container nav-profile-dropdown">
+                <div className="nav-profile-overlay">
+                  <img
+                    className="nav-profile-icon"
+                    src={avatar}
+                    alt="Profile icon"
+                  />
+                </div>
+                <div className="nav-profile-dropdown-content">
+                  <div className="nav-profile-dropdown-item">
+                    <a href={`/profile/${username}`}>{username}</a>
+                  </div>
+                  <div className="nav-profile-dropdown-item">
+                    <a href="/settings">Settings</a>
+                  </div>
+                  <div className="nav-profile-dropdown-item">
+                    <a href="/" onClick={handleLogout}>
                       Logout
                     </a>
-                  </li>
-                </ul>
+                  </div>
+                </div>
               </div>
             </div>
           </>
