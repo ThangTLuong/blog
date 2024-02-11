@@ -6,7 +6,7 @@ const LeftSection = ({ children }) => {
   return (
     <section className="left-section full-height">
       <div className="empty-left-side"></div>
-      <div className="left-options">
+      <div className="left-options-container">
         <div className="flex flex-column">
           { children }
         </div>

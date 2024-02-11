@@ -10,12 +10,22 @@ import MainSection from "../components/main-section";
 
 import options from "../resources/options.png";
 
+import addText from "../resources/upload/text.png";
+import addMedia from "../resources/upload/media.png";
+import onClear from "../resources/upload/clear.png";
+
 const LeftOptions = ({ toolTipText, icon, onClick }) => {
   return (
     <div className="w-full p-2">
       <Tooltip text={toolTipText} direction={"left"}>
-        <div className="bg-black rounded-full" onClick={onClick}>
-          <img className="w-full h-full" src={icon} alt="Option buttons" />
+        <div className="left-options" onClick={onClick}>
+          <div className="left-options-overlay">
+            <img
+              className="left-options-icon"
+              src={icon}
+              alt="Option buttons"
+            />
+          </div>
         </div>
       </Tooltip>
     </div>
@@ -42,15 +52,15 @@ const Upload = () => {
   const optionsData = [
     {
       toolTipText: "Text",
-      icon: options,
+      icon: addText,
       onClick: () => handleOptionClick("Text"),
     },
     {
       toolTipText: "Media",
-      icon: options,
+      icon: addMedia,
       onClick: () => handleOptionClick("Media"),
     },
-    { toolTipText: "Clear", icon: options, onClick: handleClearOptionClick },
+    { toolTipText: "Clear", icon: onClear, onClick: handleClearOptionClick },
   ];
 
   return (

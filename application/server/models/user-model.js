@@ -6,6 +6,11 @@ module.exports = (sequelize, Sequelize) => {
       autoIncrement: true,
       unique: true,
     },
+    user_handle: {
+      type: Sequelize.STRING,
+      allowNull: false,
+      unique: true,
+    },
     username: {
       type: Sequelize.STRING,
       allowNull: false,
