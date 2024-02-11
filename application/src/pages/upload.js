@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Tooltip from "../components/tooltip";
+import Tooltip from "../components/utilities/tooltip";
 import GetElement from "../components/post-container";
 import Dropzone from "../components/upload/drop-zone";
 

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import formatNumber from "../format-number";
+import formatNumber from "../utilities/format-number";
 
 import defaultAvatar from "../../resources/default avatar.jpg";
 
