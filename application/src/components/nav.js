@@ -11,7 +11,7 @@ const Nav = () => {
   const [username, setUsername] = useState("");
 
   useEffect(() => {
-    fetch("/session-check").then((res) => {
+    fetch("/sessions").then((res) => {
       if (res.status === 200) {
         setAuth(true);
         res.json().then((data) => {
