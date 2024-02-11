@@ -131,7 +131,7 @@ class Register extends React.Component {
               <input className="form-check-input me-2" type="checkbox" value="" id="form2Example3c" 
               onClick={() => this.setState((prevState) => ({agreement: !prevState.agreement}))}/>
               <label className="form-check-label" htmlFor="form2Example3">
-                I agree all statements in <a href="#">Terms of service</a>
+                I agree all statements in <a href="/">Terms of service</a>
               </label>
             </div>
             <input className="btn btn-primary center" type="submit" value="Register" />

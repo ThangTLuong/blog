@@ -1,9 +1,10 @@
 const express = require('express');
 const isAuth = require("../middleware/is-auth");
+const status = require('../status');
 const router = express.Router();
 
 router.get('/', isAuth, (req, res) => {
-  res.sendStatus(200);
+  status.Ok(req, res);
 })
 
 module.exports = router;

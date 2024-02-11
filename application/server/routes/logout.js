@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const isAuth = require('../middleware/is-auth');
+const status = require('../status');
 
 router.get('/', isAuth, (req, res) => {
   req.session.destroy((err) => {
@@ -10,7 +11,7 @@ router.get('/', isAuth, (req, res) => {
   });
 
   res.clearCookie("connect.sid");
-  res.sendStatus(200);
+  status.Ok(req, res);
 });
 
 module.exports = router;
