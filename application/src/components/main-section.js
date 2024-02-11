@@ -1,9 +1,9 @@
 import React from "react";
 
-function MainSection() {
+const MainSection = ({ children }) => {
   return (
     <section className="main-section full-width full-height">
-
+      {children}
     </section>
   );
 }

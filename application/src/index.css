@@ -284,3 +284,47 @@ nav div {
   opacity: 1;
   white-space: nowrap;
 }
+
+.post-container {
+  width: 100%;
+  height: auto;
+}
+
+.post-contents {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-metadata {
+  /* height: 80px; */
+}
+
+.post-metadata-div {
+  height: 65px;
+  background-color: cadetblue;
+}
+
+.post {
+  border: 2px solid rgba(52, 29, 255, 0.3);
+}
+
+.post-text {
+  height: 100px;
+  background-color: aquamarine;
+}
+
+.post-media {
+  height: 440px;
+  background-color: bisque;
+  margin-top: 10px;
+}
+
+.post-stats {
+  border: 2px solid rgba(52, 29, 255, 0.3);
+}
+
+.post-stats-div {
+  justify-content: end;
+  height: 45px;
+  background-color: brown;
+}
