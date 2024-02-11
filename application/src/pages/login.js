@@ -18,7 +18,7 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id="body">
         <form className="form form-center round-edges" action="/" method="POST" onSubmit={ this.submit }>
           <div className="login-form">
             <div className="form-floating mb-3">

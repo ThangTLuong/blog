@@ -2,7 +2,7 @@ import React from "react";
 
 function Home() {
   return (
-    <div>
+    <div id="body">
       <section id="main-section" className="form form-center round-edges">
         <h1>Thang Luong</h1> 
         <div className="divider"></div>
