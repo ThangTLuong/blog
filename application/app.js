@@ -4,7 +4,6 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const cors = require('cors');
-const isAuth = require("./server/middleware/is-auth");
 
 require("dotenv").config();
 

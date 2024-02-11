@@ -1,7 +1,11 @@
 import React from "react";
 
-import uploadOptionsMain from "../resources/options.png"
+import uploadOptionsMain from "../../resources/options.png"
 
+// For optional extra options that user can use.
+// Probably, have an option where the background, that includes the left, right, and main
+//    display section, to change if the post is the focus.
+// Also have an option to save the current setup as a preset option.
 function UploadOptions() {
 
   return (

@@ -10,21 +10,20 @@ const loginValidation = (req, res) => {
 
   User.findOne({ where: { email } })
     .then((user) => {
-      if(!user) status.Unauthorized(req, res);
+      if(!user) return status.Unauthorized(req, res);
 
       bcrypt.compare(password, user.password, (err, result) => {
-        if(!result) status.Unauthorized(req, res);
+        if(!result) return status.Unauthorized(req, res);
 
         req.session.user_id = user.user_id;
         req.session.username = user.username;
         req.session.authorized = true;
-        status.Ok(req, res);
-      })
-
+        return status.Ok(req, res);
+      });
     })
     .catch((err) => {
       status.InternalServerError(req, res, err.message);
-    })
+    });
 }
 
 module.exports = loginValidation;

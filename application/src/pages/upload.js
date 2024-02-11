@@ -1,17 +1,17 @@
 import React from "react";
 
-import UploadOptions from "../components/upload-options";
-import LeftOptions from "../components/upload-left-options";
+import UploadOptions from "../components/upload/upload-options";
+import LeftSection from "../components/upload/left-section";
+import RightSection from "../components/upload/right-section";
+import MainSection from "../components/upload/main-section";
 
 function Upload() {
   return (
     <div id="body">
-      <div className="flex h-full">
-        <div className="w-1/4">
-          <LeftOptions />
-        </div>
-        <div className="w-1/2"></div>
-        <div className="w-1/4"></div>
+      <div className="display-sections-group flex h-full w-full">
+        <LeftSection />
+        <MainSection />
+        <RightSection />
       </div>
       <UploadOptions />
     </div>
