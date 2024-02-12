@@ -1,0 +1,35 @@
+.full-height {
+  height: 100%;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.media-display-container {
+  @apply full-height full-width;
+  padding: 10px;
+}
+
+.media-display {
+  @apply full-height full-width;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+}
+
+.media-upload-display {
+  @apply full-height full-width;
+  object-fit: cover;
+  display: block;
+}
+
+.left-display-container,
+.right-display-container {
+  @apply full-height full-width;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

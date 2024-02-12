@@ -1,0 +1,44 @@
+.full-height {
+  height: 100%;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.overlay {
+  @apply absolute inset-0;
+}
+
+.upload-display {
+  @apply relative full-height full-width;
+}
+
+.upload-media, .upload-media-upload {
+  @apply overlay;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  border-radius: 5px;
+  border: 2px dashed #bfbfbf;
+  z-index: 2;
+}
+
+.upload-media-upload, 
+.upload-media:hover, 
+.upload-media-upload:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 2px solid #4671EA;
+}
+
+
+.upload-media-icon, 
+.upload-media-upload-icon {
+  color: rgb(100,100,100);
+}
+.upload-media:hover > .upload-media-icon, 
+.upload-media-upload:hover > .upload-media-upload-icon,
+.upload-media-upload-icon {
+  color: #5d83ec;
+}

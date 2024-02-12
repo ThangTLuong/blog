@@ -1,4 +1,5 @@
 import React from "react";
+import "./styles/media-display.css";
 
 const LeftDisplayContainer = ({ children }) => {
   return <div className="left-display-container">{children}</div>;

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import formatNumber from "../utilities/format-number";
 
 import defaultAvatar from "../../resources/default avatar.jpg";
+import "./styles/base-post.css";
 
 const PostContainer = ({ children }) => {
   return (

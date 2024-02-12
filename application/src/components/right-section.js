@@ -1,4 +1,5 @@
 import React from "react";
+import "./styles/right-section.css";
 
 // Will have many different templates to help user get started with their posts
 // Also thinking of having presets right under or above the templates

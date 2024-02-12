@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import "./styles/nav.css";
 
 import home from "../resources/home.png";
 import upload from "../resources/upload/upload.png";
