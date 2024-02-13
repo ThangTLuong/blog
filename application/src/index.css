@@ -11,7 +11,10 @@
 body {
   background-color: rgb(55,55,55);
   margin: 0;
-  /* overflow: hidden; */
+  overflow: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: darkgray lightgray;
 }
 
 /* Display attributes */
