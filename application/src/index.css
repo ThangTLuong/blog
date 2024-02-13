@@ -66,16 +66,17 @@ body {
   border-radius: 5px;
 }
 
+.form-container {
+  padding: 5em 0 5em 0;
+}
+
 .form {
   background-color: rgb(100,100,100);
   position: relative;
-  margin-top: 5em;
-  margin-bottom: 5em;
 }
 
-
 div[id="body"] {
-  min-height: calc(100vh - (80px + 480px));
+  min-height: calc(100vh - (80px + 400px));
   height: auto;
 }
 

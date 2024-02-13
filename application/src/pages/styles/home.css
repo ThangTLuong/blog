@@ -8,7 +8,7 @@
 
 .posts-container {
   @apply full-width;
-  margin: 5em 0 5em 0;
+  padding-top: 5em;
 }
 
 .media-container,
@@ -18,7 +18,7 @@
   border-radius: 10px 10px 0 0;
   display: flex;
   flex-wrap: wrap;
-  margin: 3em auto;
+  margin: 0 auto;
   margin-bottom: 0;
   min-width: 300px;
   max-width: 1500px;
@@ -60,7 +60,7 @@
   @apply full-width;
   border-radius: 0 0 10px 10px;
   height: 70px;
-  margin-top: 0;
+  margin: 0 auto 5em auto;
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;

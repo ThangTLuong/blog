@@ -98,100 +98,102 @@ class Register extends React.Component {
   render() {
     return (
       <div id="body">
-        <form
-          className="form form-center round-edges"
-          action="/login"
-          method="POST"
-          onSubmit={this.submit}
-        >
-          <div className="register-form">
-            <div className="input-group form-floating mb-3">
-              <input
-                type="text"
-                className="form-control rounded"
-                id="floatingUsername"
-                placeholder="Username"
-                aria-label="Username"
-                aria-describedby="basic-addon1"
-                onChange={(data) =>
-                  this.setState((prevState) => ({
-                    username: data.target.value,
-                  }))
-                }
-              />
-              <label htmlFor="floatingUsername">Username</label>
-            </div>
-            <div className="form-floating mb-3">
-              <input
-                type="email"
-                className="form-control"
-                id="floatingInput"
-                placeholder="name@example.com"
-                onChange={(data) =>
-                  this.setState((prevState) => ({ email: data.target.value }))
-                }
-              />
-              <label htmlFor="floatingInput">Email address</label>
-            </div>
-            <div className="form-floating mb-3">
-              <input
-                type="password"
-                className="form-control"
-                id="floatingPassword"
-                placeholder="Password"
-                onChange={(data) => {
-                  this.passwordStrength(data.target.value);
-                  this.setState((prevState) => ({
-                    password: data.target.value,
-                  }));
-                }}
-              />
-              <label htmlFor="floatingPassword">Password</label>
-              <div
-                id="strengthDiv"
-                className="text-center text-xs mt-1 font-bold"
-              >
-                <label id="strength"></label>
+        <div className="form-container">
+          <form
+            className="form form-center round-edges"
+            action="/login"
+            method="POST"
+            onSubmit={this.submit}
+          >
+            <div className="register-form">
+              <div className="input-group form-floating mb-3">
+                <input
+                  type="text"
+                  className="form-control rounded"
+                  id="floatingUsername"
+                  placeholder="Username"
+                  aria-label="Username"
+                  aria-describedby="basic-addon1"
+                  onChange={(data) =>
+                    this.setState((prevState) => ({
+                      username: data.target.value,
+                    }))
+                  }
+                />
+                <label htmlFor="floatingUsername">Username</label>
               </div>
-              <div id="strengthDivBar" className="rounded mt-1 h-2.5" />
-            </div>
-            <div className="form-floating">
+              <div className="form-floating mb-3">
+                <input
+                  type="email"
+                  className="form-control"
+                  id="floatingInput"
+                  placeholder="name@example.com"
+                  onChange={(data) =>
+                    this.setState((prevState) => ({ email: data.target.value }))
+                  }
+                />
+                <label htmlFor="floatingInput">Email address</label>
+              </div>
+              <div className="form-floating mb-3">
+                <input
+                  type="password"
+                  className="form-control"
+                  id="floatingPassword"
+                  placeholder="Password"
+                  onChange={(data) => {
+                    this.passwordStrength(data.target.value);
+                    this.setState((prevState) => ({
+                      password: data.target.value,
+                    }));
+                  }}
+                />
+                <label htmlFor="floatingPassword">Password</label>
+                <div
+                  id="strengthDiv"
+                  className="text-center text-xs mt-1 font-bold"
+                >
+                  <label id="strength"></label>
+                </div>
+                <div id="strengthDivBar" className="rounded mt-1 h-2.5" />
+              </div>
+              <div className="form-floating">
+                <input
+                  type="password"
+                  className="form-control"
+                  id="floatingRePassword"
+                  placeholder="Re-Password"
+                  onChange={(data) =>
+                    this.setState((prevState) => ({
+                      rePassword: data.target.value,
+                    }))
+                  }
+                />
+                <label htmlFor="floatingPassword">Re-type Password</label>
+              </div>
+              <div className="form-check d-flex center">
+                <input
+                  className="form-check-input me-2"
+                  type="checkbox"
+                  value=""
+                  id="form2Example3c"
+                  onClick={() =>
+                    this.setState((prevState) => ({
+                      agreement: !prevState.agreement,
+                    }))
+                  }
+                />
+                <label className="form-check-label" htmlFor="form2Example3">
+                  I agree all statements in <a href="/">Terms of service</a>
+                </label>
+              </div>
               <input
-                type="password"
-                className="form-control"
-                id="floatingRePassword"
-                placeholder="Re-Password"
-                onChange={(data) =>
-                  this.setState((prevState) => ({
-                    rePassword: data.target.value,
-                  }))
-                }
+                className="registration-button btn btn-primary"
+                type="submit"
+                value="Register"
               />
-              <label htmlFor="floatingPassword">Re-type Password</label>
             </div>
-            <div className="form-check d-flex center">
-              <input
-                className="form-check-input me-2"
-                type="checkbox"
-                value=""
-                id="form2Example3c"
-                onClick={() =>
-                  this.setState((prevState) => ({
-                    agreement: !prevState.agreement,
-                  }))
-                }
-              />
-              <label className="form-check-label" htmlFor="form2Example3">
-                I agree all statements in <a href="/">Terms of service</a>
-              </label>
-            </div>
-            <input
-              className="registration-button btn btn-primary"
-              type="submit"
-              value="Register"
-            />
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     );
   }
