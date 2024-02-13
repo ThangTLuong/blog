@@ -8,7 +8,7 @@
 
 .posts-container {
   @apply full-width;
-  padding-top: 5em;
+  padding: 5em 2em 0 2em;
 }
 
 .media-container,
