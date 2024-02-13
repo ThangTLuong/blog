@@ -7,4 +7,6 @@ router.get("/", isAuth, (req, res) => {
   status.Ok(req, res);
 });
 
+router.post("/", isAuth, (req, res) => {});
+
 module.exports = router;

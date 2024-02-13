@@ -13,6 +13,10 @@ const MediaDisplay = ({ media }) => {
   const leftDisplay = [];
   const rightDisplay = [];
 
+  while (media.length > 4) {
+    media.shift();
+  }
+
   media.forEach((item, index) => {
     index % 2 === 0 ? leftDisplay.push(item) : rightDisplay.push(item);
   });

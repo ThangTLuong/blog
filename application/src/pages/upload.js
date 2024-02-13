@@ -14,6 +14,7 @@ import options from "../resources/options.png";
 import addText from "../resources/upload/text.png";
 import addMedia from "../resources/upload/media.png";
 import onClear from "../resources/upload/clear.png";
+import onSubmit from "../resources/upload/upload-submit.png";
 
 const LeftOptions = ({ toolTipText, icon, onClick }) => {
   return (
@@ -37,6 +38,9 @@ const Upload = () => {
   const [isTextVisible, setIsTextVisible] = useState(false);
   const [isMediaVisible, setIsMediaVisible] = useState(false);
 
+  const [text, setText] = useState("");
+  const [media, setMedia] = useState([]);
+
   const handleOptionClick = (option) => {
     if (option === "Text") {
       setIsTextVisible(!isTextVisible);
@@ -50,6 +54,8 @@ const Upload = () => {
     setIsMediaVisible(false);
   };
 
+  const handleUploadOptionClick = () => {};
+
   const optionsData = [
     {
       toolTipText: "Text",
@@ -62,6 +68,11 @@ const Upload = () => {
       onClick: () => handleOptionClick("Media"),
     },
     { toolTipText: "Clear", icon: onClear, onClick: handleClearOptionClick },
+    {
+      toolTipText: "Upload",
+      icon: onSubmit,
+      onClick: handleUploadOptionClick,
+    },
   ];
 
   return (
