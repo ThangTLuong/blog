@@ -48,6 +48,7 @@
 .media-item .item,
 .texts-item .item {
   @apply full-height full-width;
+  border-radius: 10px;
   background-color: aquamarine;
 }
 
