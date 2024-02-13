@@ -46,11 +46,6 @@ body {
   @apply absolute inset-0;
 }
 
-#root {
-  height: 100vh;
-  width: 100vw;
-}
-
 .center {
   margin-top: 1em;
   margin-left: 1em;
@@ -74,15 +69,15 @@ body {
 .form {
   background-color: rgb(100,100,100);
   position: relative;
-  top: 5em;
+  margin-top: 5em;
+  margin-bottom: 5em;
 }
 
 
 div[id="body"] {
-  height: calc(100vh - 80px);
+  min-height: calc(100vh - (80px + 480px));
+  height: auto;
 }
-
-
 
 .center-align {
   height: 45px;
@@ -111,7 +106,7 @@ div[id="body"] {
 .upload-options-group {
   width: 80px;
   height: 80px;
-  position: fixed;
+  position: absolute;
   bottom: 0;
   right: 0;
   margin: 50px;

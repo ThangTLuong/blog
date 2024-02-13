@@ -6,6 +6,10 @@
   width: 100%;
 }
 
+.display-sections-group {
+  height: 100vh;
+}
+
 .left-options {
   background-color: rgb(80,80,80);
   border-radius: 50px;
