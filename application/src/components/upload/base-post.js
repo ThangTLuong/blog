@@ -13,7 +13,7 @@ const PostContainer = ({ children }) => {
 };
 
 const PostMetadata = ({ metaData }) => {
-  const [avatar, username, time] = [];
+  const { avatar, username, time_posted } = metaData;
 
   return (
     <div className="post-metadata-container">
@@ -34,7 +34,9 @@ const PostMetadata = ({ metaData }) => {
         </div>
         <div className="dot-divider" />
         <div className="post-metadata-time-container">
-          <div className="post-metadata-time">{time ? time : "now"}</div>
+          <div className="post-metadata-time">
+            {time_posted ? time_posted : "now"}
+          </div>
         </div>
       </div>
     </div>

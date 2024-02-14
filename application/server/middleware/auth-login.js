@@ -17,6 +17,7 @@ const loginValidation = (req, res) => {
 
         req.session.user_id = user.user_id;
         req.session.username = user.username;
+        req.session.user_handle = user.user_handle;
         req.session.authorized = true;
         return status.Ok(req, res);
       });

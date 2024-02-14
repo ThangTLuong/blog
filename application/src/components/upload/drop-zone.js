@@ -3,11 +3,10 @@ import { useDropzone } from "react-dropzone";
 import MediaDisplay from "../media-display";
 import "./styles/drop-zone.css";
 
-const Dropzone = ({ className }) => {
+const Dropzone = ({ className, onMediaChange }) => {
   const [files, setFiles] = useState([]);
 
   const onDrop = useCallback((acceptedFiles) => {
-
     setFiles((prevFiles) => [
       ...prevFiles,
       ...acceptedFiles.map((file) => ({
@@ -23,7 +22,7 @@ const Dropzone = ({ className }) => {
     <div {...getRootProps({ className: className })}>
       <input {...getInputProps()} />
       <div className="upload-display">
-        <MediaDisplay media={files} />
+        <MediaDisplay media={files} onMediaChange={onMediaChange}/>
         {isDragActive ? (
           <div className="upload-media-upload">
             <span className="upload-media-upload-icon material-icons-outlined text-9xl">
