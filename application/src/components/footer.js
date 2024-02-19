@@ -4,7 +4,11 @@ import "./styles/footer.css";
 const Footer = () => {
   return (
     <div className="footer-container">
-      <div></div>
+      <div className="footer-flex">
+        <div className="item-overlay">
+          <div className="item"></div>
+        </div>
+      </div>
     </div>
   );
 };

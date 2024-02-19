@@ -45,7 +45,7 @@ const Upload = () => {
   const [media, setMedia] = useState([]);
 
   useEffect(() => {
-    fetch("/upload")
+    fetch("/sessions")
       .then((res) => res.json())
       .then((data) => {
         const userData = {
@@ -84,7 +84,15 @@ const Upload = () => {
 
   const handleUploadOptionClick = (data) => {
     data.preventDefault();
-    // upload({ user_id, text, media });
+
+    const baseBody = {};
+
+    let body = { ...baseBody };
+
+    if (isTextVisible) body.text = text;
+    if (isMediaVisible) body.media = media;
+
+    upload(body);
   };
 
   const optionsData = [

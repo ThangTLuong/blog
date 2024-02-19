@@ -16,7 +16,7 @@ const Nav = () => {
       if (res.status === 200) {
         setAuth(true);
         res.json().then((data) => {
-          setUsername(data);
+          setUsername(data.username);
         });
       }
     });

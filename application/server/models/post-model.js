@@ -18,18 +18,6 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.DATE,
       allowNull: false,
     },
-    number_of_likes: {
-      type: Sequelize.INTEGER,
-      allowNull: false,
-    },
-    number_of_comments: {
-      type: Sequelize.INTEGER,
-      allowNull: false,
-    },
-    number_of_reposts: {
-      type: Sequelize.INTEGER,
-      allowNull: false,
-    },
   });
 
   return Post;

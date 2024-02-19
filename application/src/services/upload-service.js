@@ -1,12 +1,15 @@
 const upload = (state) => {
-  const { userId, text, media } = state;
+  const { text, media } = state;
+  const fd = new FormData();
 
-  fetch("/upload", {
+  fd.append("text", text);
+  media.forEach((file) => {
+    fd.append("media", file);
+  });
+
+  fetch("/posts", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ user_id: userId, text, media }),
+    body: fd,
   }).then((data) => {
     switch (data.status) {
       case 201:

@@ -31,11 +31,14 @@
   height: 80px;
 }
 
-.post-metadata-avatar-container, .post-metadata-username-container, .post-metadata-time-container {
+.post-metadata-avatar-container, 
+.post-metadata-username-container, 
+.post-metadata-time-container {
   @apply full-height;
 }
 
-.post-metadata-username-container, .post-metadata-time-container {
+.post-metadata-username-container, 
+.post-metadata-time-container {
   width: auto;
 }
 
@@ -52,18 +55,28 @@
   height: 80px;
 }
 
-.post-metadata-username, .post-metadata-time {
+.post-metadata-username, 
+.post-metadata-time,
+.post-metadata-handle {
   margin-top: 10px;
-  margin-left: 5px;
+  margin-left: 10px;
   font-size: 16px;
   color: rgb(220, 220, 220);
 }
 
-.post-metadata-username {
-  font-weight: 700;
+.post-metadata-time {
+  margin-left: 5px;
 }
 
-.post-metadata-time {
+.post-metadata-handle {
+  margin-top: 0;
+  margin-left: 5px;
+  color: rgba(220, 220, 220, 0.4);
+}
+
+.post-metadata-username {
+  margin-right: 5px;
+  font-weight: 700;
 }
 
 .post:not(:empty) {
@@ -134,4 +147,16 @@
 
 .post-stats-overlay:hover {
   background-color: rgba(255, 192, 203, 0.5);
+}
+
+.post-metadata-right-section {
+  @apply full-width full-height;
+  display: flex;
+  flex-direction: column;
+}
+
+.post-metadata-items:nth-child(1) {
+  @apply full-width;
+  display: flex;
+  height: 35%;
 }
