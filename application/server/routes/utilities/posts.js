@@ -9,7 +9,7 @@ router.get("/", (req, res) => {
   post.loadPost(req, res);
 });
 
-router.post("/", upload.array("media"), (req, res) => {
+router.post("/", isAuth, upload.array("media"), (req, res) => {
   post.newPost(req, res);
 });
 
