@@ -32,7 +32,7 @@ module.exports = {
         const mediaPromises = media.map((mediaContent) => {
           return Media.create({
             post_id: newPostInstance.post_id,
-            media: mediaContent,
+            media: mediaContent.buffer,
           });
         });
 
