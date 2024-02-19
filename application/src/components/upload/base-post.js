@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import formatNumber from "../utilities/format-number";
 
 import defaultAvatar from "../../resources/default avatar.jpg";
+import "./styles/base-post.css";
 
 const PostContainer = ({ children }) => {
   return (
@@ -12,7 +13,7 @@ const PostContainer = ({ children }) => {
 };
 
 const PostMetadata = ({ metaData }) => {
-  const [avatar, username, time] = [];
+  const { avatar, username, user_handle, time_posted } = metaData;
 
   return (
     <div className="post-metadata-container">
@@ -26,14 +27,27 @@ const PostMetadata = ({ metaData }) => {
             )}
           </div>
         </div>
-        <div className="post-metadata-username-container">
-          <div className="post-metadata-username">
-            {username ? username : "username-mia-binary-banter-break"}
+        <div className="post-metadata-right-section">
+          <div className="post-metadata-items">
+            <div className="post-metadata-username-container">
+              <div className="post-metadata-username">
+                {username ? username : "username-mia-binary-banter-break"}
+              </div>
+            </div>
+            <div className="dot-divider" />
+            <div className="post-metadata-time-container">
+              <div className="post-metadata-time">
+                {time_posted ? time_posted : "now"}
+              </div>
+            </div>
           </div>
-        </div>
-        <div className="dot-divider" />
-        <div className="post-metadata-time-container">
-          <div className="post-metadata-time">{time ? time : "now"}</div>
+          <div className="post-metadata-items">
+            <div className="post-metadata-handle">
+              {user_handle
+                ? `@${user_handle}`
+                : "@username-mia-binary-banter-break"}
+            </div>
+          </div>
         </div>
       </div>
     </div>

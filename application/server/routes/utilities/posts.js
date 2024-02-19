@@ -1,14 +1,16 @@
 const express = require("express");
 const router = express.Router();
+const isAuth = require("../../middleware/is-auth");
+const upload = require("../../middleware/upload");
 
-router.get("/", (req, res) => {});
+const { post } = require("../../controller");
 
-router.get("/:postId", (req, res) => {});
+router.get("/", (req, res) => {
+  post.loadPost(req, res);
+});
 
-router.get("/:postId/likes", (req, res) => {});
-
-router.get("/:postId/comments", (req, res) => {});
-
-router.get("/:postId/reposts", (req, res) => {});
+router.post("/", upload.array("media"), (req, res) => {
+  post.newPost(req, res);
+});
 
 module.exports = router;

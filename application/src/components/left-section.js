@@ -1,4 +1,5 @@
 import React from "react";
+import "./styles/left-section.css";
 
 // Will have primary options such as upload an image, add text, etc.
 // The mostly used options

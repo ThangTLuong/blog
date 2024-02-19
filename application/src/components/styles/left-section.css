@@ -1,0 +1,25 @@
+.full-height {
+  height: 100%;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.left-section {
+  display: flex;
+  border-right: 2px solid gray;
+  background: linear-gradient(to right, rgb(55,55,55), gray);
+  width: 660px;
+}
+
+.empty-left-side {
+  min-width: 0px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.left-options-container {
+  min-width: 5em;
+  max-width: 5em;
+}
