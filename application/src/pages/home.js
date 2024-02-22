@@ -47,6 +47,16 @@ const Home = () => {
     setMediaMinHeight((prevState) => prevState + 631);
   };
 
+  const showLessMedia = () => {
+    setMediaMinHeight((prevState) => {
+      if (prevState - 631 >= 631) {
+        return prevState - 631;
+      } else {
+        return prevState;
+      }
+    });
+  };
+
   const showMoreTexts = () => {
     setTextsMinHeight((prevState) => prevState + 250);
   };
@@ -93,11 +103,22 @@ const Home = () => {
                 </div>
               ))}
         </div>
-        <div className="button-group">
-          <div className="button" onClick={showMoreMedia}>
-            Show more
+        {mediaMinHeight > 631 ? (
+          <div className="button-group">
+            <div className="button" onClick={showLessMedia}>
+              Show less
+            </div>
+            <div className="button" onClick={showMoreMedia}>
+              Show more
+            </div>
           </div>
-        </div>
+        ) : (
+          <div className="button-group">
+            <div className="button" onClick={showMoreMedia}>
+              Show more
+            </div>
+          </div>
+        )}
         <div
           className="texts-container"
           style={{ minHeight: `${textsMinHeight}px` }}
