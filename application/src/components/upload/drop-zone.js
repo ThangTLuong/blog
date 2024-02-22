@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
-import MediaDisplay from "../media-display";
+import MediaDisplay from "./media-display";
 import "./styles/drop-zone.css";
 
 const Dropzone = ({ className, onMediaChange }) => {

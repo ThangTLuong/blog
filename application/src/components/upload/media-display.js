@@ -9,7 +9,7 @@ const RightDisplayContainer = ({ children }) => {
   return <div className="right-display-container">{children}</div>;
 };
 
-const MediaDisplay = ({ media, rawFiles, onMediaChange }) => {
+const MediaDisplay = ({ media, rawFiles = [], onMediaChange = () => {} }) => {
   const leftDisplay = [];
   const rightDisplay = [];
 
