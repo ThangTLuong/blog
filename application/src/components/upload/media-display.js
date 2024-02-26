@@ -14,7 +14,12 @@ const MediaDisplay = ({ media, rawFiles = [], onMediaChange = () => {} }) => {
   const rightDisplay = [];
 
   useEffect(() => {
-    onMediaChange(rawFiles);
+    let isMounted = true;
+    if (isMounted) onMediaChange(rawFiles);
+
+    return () => {
+      isMounted = false;
+    };
   }, [media, rawFiles, onMediaChange]);
 
   media.forEach((item, index) => {

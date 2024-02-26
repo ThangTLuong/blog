@@ -12,14 +12,20 @@ const Nav = () => {
   const [username, setUsername] = useState("");
 
   useEffect(() => {
+    let isMounted = true;
+
     fetch("/sessions").then((res) => {
-      if (res.status === 200) {
+      if (isMounted && res.status === 200) {
         setAuth(true);
         res.json().then((data) => {
           setUsername(data.username);
         });
       }
     });
+
+    return () => {
+      isMounted = false;
+    };
   }, [auth]);
 
   const handleLogout = () => {
