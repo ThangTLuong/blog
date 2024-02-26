@@ -45,6 +45,8 @@ const Upload = () => {
   const [media, setMedia] = useState([]);
 
   useEffect(() => {
+    let isMounted = true;
+
     fetch("/sessions")
       .then((res) => res.json())
       .then((data) => {
@@ -54,11 +56,15 @@ const Upload = () => {
           user_handle: data.user_handle,
           time_posted: "now",
         };
-        setUserData(userData);
+        if (isMounted) setUserData(userData);
       })
       .catch((error) => {
         console.error("Error fetching user data:", error);
       });
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   const handleTextChange = (event) => {

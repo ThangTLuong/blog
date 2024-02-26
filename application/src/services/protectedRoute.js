@@ -7,8 +7,10 @@ const ProtectedRoute = ({ element: Component, ...rest }) => {
 
   useEffect(() => {
     const page = window.location.pathname;
+    let isMounted = true;
     fetch(page)
       .then((res) => {
+        if (!isMounted) return;
         if (res.status === 401) {
           setAuth(false);
           // alert("Permission Denied\nPlease log in");
@@ -22,6 +24,9 @@ const ProtectedRoute = ({ element: Component, ...rest }) => {
         setAuth(false);
         navigate("/");
       });
+    return () => {
+      isMounted = false;
+    };
   }, [navigate]);
 
   if (!Auth) {

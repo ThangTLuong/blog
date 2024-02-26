@@ -6,10 +6,6 @@ module.exports = (sequelize, Sequelize) => {
       autoIncrement: true,
       unique: true,
     },
-    number_of_likes: {
-      type: Sequelize.INTEGER,
-      defaultValue: 0,
-    },
   });
 
   return Like;

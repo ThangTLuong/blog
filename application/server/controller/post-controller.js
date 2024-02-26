@@ -1,5 +1,6 @@
 const {
-  models: { Post, Text, Media, Like, Comment, Repost },
+  models: { User, Post, Text, Media, Like, Comment, Repost },
+  sequelize,
 } = require("../models");
 const status = require("../status");
 
@@ -58,24 +59,82 @@ module.exports = {
     const { user_id, limit } = req.body;
 
     const baseQuery = {
-      order: [["date_time"], "DESC"],
-      limit: limit || 4,
+      order: [["date_time", "DESC"]],
+      limit: limit || 3,
       include: [
         { model: Text },
         { model: Media },
-        { model: Like },
-        { model: Comment },
-        { model: Repost },
+        {
+          model: User,
+          attributes: ["user_id", "username", "user_handle"],
+        },
       ],
+      distinct: true,
     };
 
-    const query = user_id ? { ...baseQuery, where: { user_id } } : baseQuery;
+    Post.findAll(baseQuery)
+      .then((posts) => {
+        const postIds = posts.map((post) => post.post_id);
 
-    Post.findAll(query)
+        return Promise.all([
+          Like.findAll({
+            attributes: [
+              "post_id",
+              [sequelize.fn("COUNT", sequelize.col("like_id")), "likeCount"],
+            ],
+            where: { post_id: postIds },
+            group: ["post_id"],
+          }),
+          Comment.findAll({
+            attributes: [
+              "post_id",
+              [
+                sequelize.fn("COUNT", sequelize.col("comment_id")),
+                "commentCount",
+              ],
+            ],
+            where: { post_id: postIds },
+            group: ["post_id"],
+          }),
+          Repost.findAll({
+            attributes: [
+              "post_id",
+              [
+                sequelize.fn("COUNT", sequelize.col("repost_id")),
+                "repostCount",
+              ],
+            ],
+            where: { post_id: postIds },
+            group: ["post_id"],
+          }),
+        ]).then(([likes, comments, reposts]) => {
+          const mergedPosts = posts.map((post) => {
+            const likeCount =
+              likes.find((like) => like.post_id === post.post_id)?.likeCount ||
+              0;
+            const commentCount =
+              comments.find((comment) => comment.post_id === post.post_id)
+                ?.commentCount || 0;
+            const repostCount =
+              reposts.find((repost) => repost.post_id === post.post_id)
+                ?.repostCount || 0;
+
+            return {
+              ...post.toJSON(),
+              likeCount,
+              commentCount,
+              repostCount,
+            };
+          });
+
+          return mergedPosts;
+        });
+      })
       .then((posts) => {
         status.Ok(req, res, posts);
       })
       .catch((err) => {
+        console.log(err);
         status.InternalServerError(req, res, err);
       });
   },
