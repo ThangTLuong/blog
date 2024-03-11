@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import GetElement from "../components/post-container";
 import "./styles/home.css";
 import MediaDisplay from "../components/upload/media-display";
+import { fetchPosts } from "../services/fetch-posts";
 
 const useFetchPost = () => {
   const [posts, setPosts] = useState([]);
@@ -10,24 +11,15 @@ const useFetchPost = () => {
   useEffect(() => {
     let isMounted = true;
 
-    fetch("/posts", {
-      method: "GET",
-    })
-      .then((res) => {
-        if (res.status !== 200) {
-          throw new Error("Error fetching posts.");
-        }
-        return res.json();
-      })
+    fetchPosts()
       .then((fetchedPosts) => {
         if (isMounted) {
-          console.log(fetchedPosts);
-          setPosts((prevPosts) => [...prevPosts, ...fetchedPosts]);
+          setPosts((prevState) => [...prevState, ...fetchedPosts]);
           setIsLoading(false);
         }
       })
       .catch((err) => {
-        alert("An error has occurred.");
+        alert("Couldn't fetch posts.");
         setIsLoading(false);
       });
 
