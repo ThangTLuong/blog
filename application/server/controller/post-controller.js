@@ -60,7 +60,7 @@ module.exports = {
 
     const baseQuery = {
       order: [["date_time", "DESC"]],
-      limit: limit || 3,
+      limit: limit || 60,
       include: [
         { model: Text },
         { model: Media },
