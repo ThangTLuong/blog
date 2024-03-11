@@ -21,6 +21,7 @@ const useFetchPost = () => {
       })
       .then((fetchedPosts) => {
         if (isMounted) {
+          console.log(fetchedPosts);
           setPosts((prevPosts) => [...prevPosts, ...fetchedPosts]);
           setIsLoading(false);
         }
@@ -39,22 +40,18 @@ const useFetchPost = () => {
 };
 
 const Home = () => {
-  const [mediaMinHeight, setMediaMinHeight] = useState(631);
+  const [maxMediaDisplay, setMaxMediaDisplay] = useState(3);
   const [textsMinHeight, setTextsMinHeight] = useState(250);
   const { posts, isLoading } = useFetchPost();
 
   const showMoreMedia = () => {
-    setMediaMinHeight((prevState) => prevState + 631);
+    if (maxMediaDisplay + 3 <= posts.length)
+      setMaxMediaDisplay((prevState) => prevState + 3);
   };
 
   const showLessMedia = () => {
-    setMediaMinHeight((prevState) => {
-      if (prevState - 631 >= 631) {
-        return prevState - 631;
-      } else {
-        return prevState;
-      }
-    });
+    if (maxMediaDisplay - 3 >= 0)
+      setMaxMediaDisplay((prevState) => prevState - 3);
   };
 
   const showMoreTexts = () => {
@@ -77,13 +74,10 @@ const Home = () => {
   return (
     <div id="body">
       <div className="posts-container">
-        <div
-          className="media-container"
-          style={{ minHeight: `${mediaMinHeight}px` }}
-        >
+        <div className="media-container">
           {isLoading
             ? "Loading..."
-            : posts.map((post, index) => (
+            : posts.slice(0, maxMediaDisplay).map((post, index) => (
                 <div className="media-item" key={`post-${index}`}>
                   <div className="item">
                     <GetElement
@@ -103,27 +97,38 @@ const Home = () => {
                 </div>
               ))}
         </div>
-        {mediaMinHeight > 631 ? (
-          <div className="button-group">
-            <div className="button" onClick={showLessMedia}>
-              Show less
+        {maxMediaDisplay > 3 ? (
+          maxMediaDisplay + 3 <= posts.length ? (
+            <div className="button-group">
+              <div className="button" onClick={showLessMedia}>
+                Show less
+              </div>
+              <div className="button" onClick={showMoreMedia}>
+                Show more
+              </div>
             </div>
+          ) : (
+            <div className="button-group">
+              <div className="button" onClick={showLessMedia}>
+                Show less
+              </div>
+            </div>
+          )
+        ) : maxMediaDisplay + 3 <= posts.length ? (
+          <div className="button-group">
             <div className="button" onClick={showMoreMedia}>
               Show more
             </div>
           </div>
         ) : (
-          <div className="button-group">
-            <div className="button" onClick={showMoreMedia}>
-              Show more
-            </div>
-          </div>
+          <></>
         )}
+        <div className="margin"></div>
         <div
           className="texts-container"
           style={{ minHeight: `${textsMinHeight}px` }}
         >
-          {Array.from({ length: 12 * 10 }).map((_, index) => (
+          {Array.from({ length: 3 }).map((_, index) => (
             <div className="texts-item" key={index}>
               <div className="item"></div>
             </div>
@@ -134,6 +139,7 @@ const Home = () => {
             Show more
           </div>
         </div>
+        <div className="margin"></div>
       </div>
     </div>
   );
