@@ -33,22 +33,22 @@ const useFetchPost = () => {
 
 const Home = () => {
   const [maxMediaDisplay, setMaxMediaDisplay] = useState(3);
-  const [textsMinHeight, setTextsMinHeight] = useState(250);
-  const { posts, isLoading } = useFetchPost();
+const [textsMinHeight, setTextsMinHeight] = useState(250);
+const { posts, isLoading } = useFetchPost();
 
-  const showMoreMedia = () => {
-    if (maxMediaDisplay + 3 <= posts.length)
-      setMaxMediaDisplay((prevState) => prevState + 3);
-  };
+const showMoreMedia = () => {
+  if (maxMediaDisplay + 3 <= posts.length)
+    setMaxMediaDisplay((prevState) => prevState + 3);
+};
 
-  const showLessMedia = () => {
-    if (maxMediaDisplay - 3 >= 0)
-      setMaxMediaDisplay((prevState) => prevState - 3);
-  };
+const showLessMedia = () => {
+  if (maxMediaDisplay - 3 >= 0)
+    setMaxMediaDisplay((prevState) => prevState - 3);
+};
 
-  const showMoreTexts = () => {
-    setTextsMinHeight((prevState) => prevState + 250);
-  };
+const showMoreTexts = () => {
+  setTextsMinHeight((prevState) => prevState + 250);
+};
 
   const parseMedia = (medias) => {
     const media = [];

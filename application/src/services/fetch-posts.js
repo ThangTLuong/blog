@@ -18,4 +18,5 @@ const fetchPosts = () => {
   });
 };
 
+
 export { fetchPosts };
