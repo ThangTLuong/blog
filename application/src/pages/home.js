@@ -5,7 +5,8 @@ import MediaDisplay from "../components/upload/media-display";
 import { fetchPosts } from "../services/fetch-posts";
 
 const useFetchPost = () => {
-  const [posts, setPosts] = useState([]);
+  const [mediaPosts, setMediaPosts] = useState([]);
+  const [textPosts, setTextPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -14,12 +15,17 @@ const useFetchPost = () => {
     fetchPosts()
       .then((fetchedPosts) => {
         if (isMounted) {
-          setPosts((prevState) => [...prevState, ...fetchedPosts]);
+          fetchedPosts.forEach((post) => {
+            if (post.medias && post.medias.length > 0)
+              setMediaPosts((prevState) => [...prevState, post]);
+            else {
+              setTextPosts((prevState) => [...prevState, post]);
+            }
+          });
           setIsLoading(false);
         }
       })
       .catch((err) => {
-        alert("Couldn't fetch posts.");
         setIsLoading(false);
       });
 
@@ -28,27 +34,33 @@ const useFetchPost = () => {
     };
   }, []);
 
-  return { posts, isLoading };
+  return { mediaPosts, textPosts, isLoading };
 };
 
 const Home = () => {
   const [maxMediaDisplay, setMaxMediaDisplay] = useState(3);
-const [textsMinHeight, setTextsMinHeight] = useState(250);
-const { posts, isLoading } = useFetchPost();
+  const [maxTextsDisplay, setMaxTextsDisplay] = useState(3);
+  const { mediaPosts, textPosts, isLoading } = useFetchPost();
 
-const showMoreMedia = () => {
-  if (maxMediaDisplay + 3 <= posts.length)
-    setMaxMediaDisplay((prevState) => prevState + 3);
-};
+  const showMoreMedia = () => {
+    if (maxMediaDisplay + 3 <= mediaPosts.length)
+      setMaxMediaDisplay((prevState) => prevState + 3);
+  };
 
-const showLessMedia = () => {
-  if (maxMediaDisplay - 3 >= 0)
-    setMaxMediaDisplay((prevState) => prevState - 3);
-};
+  const showLessMedia = () => {
+    if (maxMediaDisplay - 3 >= 0)
+      setMaxMediaDisplay((prevState) => prevState - 3);
+  };
 
-const showMoreTexts = () => {
-  setTextsMinHeight((prevState) => prevState + 250);
-};
+  const showMoreTexts = () => {
+    if (maxTextsDisplay + 3 <= textPosts.length)
+      setMaxTextsDisplay((prevState) => prevState + 3);
+  };
+
+  const showLessTexts = () => {
+    if (maxTextsDisplay - 3 >= 0)
+      setMaxTextsDisplay((prevState) => prevState - 3);
+  };
 
   const parseMedia = (medias) => {
     const media = [];
@@ -69,11 +81,11 @@ const showMoreTexts = () => {
         <div className="media-container">
           {isLoading
             ? "Loading..."
-            : posts.slice(0, maxMediaDisplay).map((post, index) => (
+            : mediaPosts.slice(0, maxMediaDisplay).map((post, index) => (
                 <div className="media-item" key={`post-${index}`}>
                   <div className="item">
                     <GetElement
-                      isTextVisible={post.text ? true : false}
+                      isTextVisible={true}
                       isMediaVisible={post.medias ? true : false}
                       userData={{
                         user_id: post.user.user_id,
@@ -90,7 +102,7 @@ const showMoreTexts = () => {
               ))}
         </div>
         {maxMediaDisplay > 3 ? (
-          maxMediaDisplay + 3 <= posts.length ? (
+          maxMediaDisplay + 3 <= mediaPosts.length ? (
             <div className="button-group">
               <div className="button" onClick={showLessMedia}>
                 Show less
@@ -106,7 +118,7 @@ const showMoreTexts = () => {
               </div>
             </div>
           )
-        ) : maxMediaDisplay + 3 <= posts.length ? (
+        ) : maxMediaDisplay + 3 <= mediaPosts.length ? (
           <div className="button-group">
             <div className="button" onClick={showMoreMedia}>
               Show more
@@ -116,21 +128,54 @@ const showMoreTexts = () => {
           <></>
         )}
         <div className="margin"></div>
-        <div
-          className="texts-container"
-          style={{ minHeight: `${textsMinHeight}px` }}
-        >
-          {Array.from({ length: 3 }).map((_, index) => (
-            <div className="texts-item" key={index}>
-              <div className="item"></div>
+        <div className="texts-container">
+          {isLoading
+            ? "Loading"
+            : textPosts.slice(0, maxTextsDisplay).map((post, index) => (
+                <div className="texts-item" key={`post-${index}`}>
+                  <div className="item">
+                    <GetElement
+                      isTextVisible={true}
+                      isMediaVisible={false}
+                      userData={{
+                        user_id: post.user.user_id,
+                        username: post.user.username,
+                        user_handle: post.user.user_handle,
+                        time_posted: post.date_time,
+                      }}
+                    >
+                      <p className="post-text-area">{post.text.text}</p>
+                    </GetElement>
+                  </div>
+                </div>
+              ))}
+        </div>
+        {maxTextsDisplay > 3 ? (
+          maxTextsDisplay + 3 <= textPosts.length ? (
+            <div className="button-group">
+              <div className="button" onClick={showLessTexts}>
+                Show less
+              </div>
+              <div className="button" onClick={showMoreTexts}>
+                Show more
+              </div>
             </div>
-          ))}
-        </div>
-        <div className="button-group">
-          <div className="button" onClick={showMoreTexts}>
-            Show more
+          ) : (
+            <div className="button-group">
+              <div className="button" onClick={showLessTexts}>
+                Show less
+              </div>
+            </div>
+          )
+        ) : maxTextsDisplay + 3 <= textPosts.length ? (
+          <div className="button-group">
+            <div className="button" onClick={showMoreTexts}>
+              Show more
+            </div>
           </div>
-        </div>
+        ) : (
+          <></>
+        )}
         <div className="margin"></div>
       </div>
     </div>
