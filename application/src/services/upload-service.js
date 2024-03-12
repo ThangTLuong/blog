@@ -2,10 +2,12 @@ const upload = (state) => {
   const { text, media } = state;
   const fd = new FormData();
 
-  fd.append("text", text);
-  media.forEach((file) => {
-    fd.append("media", file);
-  });
+  if (text) fd.append("text", text);
+
+  if (media)
+    media.forEach((file) => {
+      fd.append("media", file);
+    });
 
   fetch("/posts", {
     method: "POST",
