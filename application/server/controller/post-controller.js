@@ -4,73 +4,8 @@ const {
 } = require("../models");
 const status = require("../status");
 
-module.exports = {
-  newPost: (req, res) => {
-    const { original_post_id, text } = req.body;
-    const { user_id } = req.session;
-    const media = req.files;
-    let newPostInstance;
-
-    const basePost = {
-      user_id: 1,
-      date_time: new Date(),
-    };
-
-    const post = original_post_id
-      ? { ...basePost, original_post_id }
-      : basePost;
-
-    Post.create(post)
-      .then((newPost) => {
-        newPostInstance = newPost;
-
-        return Text.create({
-          post_id: newPost.post_id,
-          text,
-        });
-      })
-      .then(() => {
-        const mediaPromises = media.map((mediaContent) => {
-          return Media.create({
-            post_id: newPostInstance.post_id,
-            media: mediaContent.buffer,
-          });
-        });
-
-        return Promise.all(mediaPromises);
-      })
-      .then(() => {
-        const like = Like.create({ post_id: newPostInstance.post_id });
-        const comment = Comment.create({ post_id: newPostInstance.post_id });
-        const repost = Repost.create({ post_id: newPostInstance.post_id });
-
-        return Promise.all([like, comment, repost]);
-      })
-      .then(() => {
-        status.Created(req, res, "Post created successfully.");
-      })
-      .catch((err) => {
-        status.InternalServerError(req, res, err);
-        console.log(err.message);
-      });
-  },
-
-  loadPost: (req, res) => {
-
-    const baseQuery = {
-      order: [["date_time", "DESC"]],
-      limit: 60,
-      include: [
-        { model: Text },
-        { model: Media },
-        {
-          model: User,
-          attributes: ["user_id", "username", "user_handle"],
-        },
-      ],
-      distinct: true,
-    };
-
+const getPosts = (baseQuery) => {
+  return new Promise((resolve, reject) => {
     Post.findAll(baseQuery)
       .then((posts) => {
         const postIds = posts.map((post) => post.post_id);
@@ -130,6 +65,82 @@ module.exports = {
         });
       })
       .then((posts) => {
+        resolve(posts);
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};
+
+module.exports = {
+  newPost: (req, res) => {
+    const { original_post_id, text } = req.body;
+    const { user_id } = req.session;
+    const media = req.files;
+    let newPostInstance;
+
+    const basePost = {
+      user_id: 1,
+      date_time: new Date(),
+    };
+
+    const post = original_post_id
+      ? { ...basePost, original_post_id }
+      : basePost;
+
+    Post.create(post)
+      .then((newPost) => {
+        newPostInstance = newPost;
+
+        return Text.create({
+          post_id: newPost.post_id,
+          text,
+        });
+      })
+      .then(() => {
+        const mediaPromises = media.map((mediaContent) => {
+          return Media.create({
+            post_id: newPostInstance.post_id,
+            media: mediaContent.buffer,
+          });
+        });
+
+        return Promise.all(mediaPromises);
+      })
+      .then(() => {
+        const like = Like.create({ post_id: newPostInstance.post_id });
+        const comment = Comment.create({ post_id: newPostInstance.post_id });
+        const repost = Repost.create({ post_id: newPostInstance.post_id });
+
+        return Promise.all([like, comment, repost]);
+      })
+      .then(() => {
+        status.Created(req, res, "Post created successfully.");
+      })
+      .catch((err) => {
+        status.InternalServerError(req, res, err);
+        console.log(err.message);
+      });
+  },
+
+  loadPost: (req, res) => {
+    const baseQuery = {
+      order: [["date_time", "DESC"]],
+      limit: 60,
+      include: [
+        { model: Text },
+        { model: Media },
+        {
+          model: User,
+          attributes: ["user_id", "username", "user_handle"],
+        },
+      ],
+      distinct: true,
+    };
+
+    getPosts(baseQuery)
+      .then((posts) => {
         status.Ok(req, res, posts);
       })
       .catch((err) => {
@@ -137,4 +148,40 @@ module.exports = {
         status.InternalServerError(req, res, err);
       });
   },
+
+  loadText: (req, res) => {
+    const baseQuery = {
+      order: [["date_time", "DESC"]],
+      where: {
+        "$media.post_id$": null,
+      },
+      limit: 60,
+      include: [
+        {
+          model: Text,
+          required: true,
+        },
+        {
+          model: Media,
+          required: false,
+        },
+        {
+          model: User,
+          required: true,
+          attributes: ["user_id", "username", "user_handle"],
+        },
+      ],
+      distinct: true,
+    };
+
+    getPosts(baseQuery)
+      .then((posts) => {
+        status.Ok(req, res, posts);
+      })
+      .catch((err) => {
+        status.InternalServerError(req, res, err);
+      });
+  },
+
+  loadProfilePost: (req, res, userhandle) => {},
 };
