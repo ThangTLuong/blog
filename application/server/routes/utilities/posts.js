@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
   // If media is false
   // fetch posts with only text
   if (media === 'true') {
-
+    
   } else {
 
   }
