@@ -56,7 +56,6 @@ module.exports = {
   },
 
   loadPost: (req, res) => {
-
     const baseQuery = {
       order: [["date_time", "DESC"]],
       limit: 60,
@@ -137,4 +136,8 @@ module.exports = {
         status.InternalServerError(req, res, err);
       });
   },
+
+  loadText: (req, res) => {},
+
+  loadProfilePost: (req, res, userhandle) => {},
 };
