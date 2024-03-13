@@ -56,11 +56,10 @@ module.exports = {
   },
 
   loadPost: (req, res) => {
-    const { user_id, limit } = req.body;
 
     const baseQuery = {
       order: [["date_time", "DESC"]],
-      limit: limit || 60,
+      limit: 60,
       include: [
         { model: Text },
         { model: Media },

@@ -26,7 +26,11 @@ const useFetchPost = () => {
         }
       })
       .catch((err) => {
-        setIsLoading(false);
+        if (isMounted) {
+          alert("Couldn't load posts.");
+          console.log(err);
+          setIsLoading(false);
+        }
       });
 
     return () => {
