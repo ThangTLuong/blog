@@ -1,6 +1,6 @@
-const fetchPosts = () => {
+const fetchPosts = (media = false) => {
   return new Promise((resolve, reject) => {
-    fetch("/posts", {
+    fetch(`/posts`, {
       method: "GET",
     })
       .then((res) => {
@@ -17,6 +17,5 @@ const fetchPosts = () => {
       });
   });
 };
-
 
 export { fetchPosts };

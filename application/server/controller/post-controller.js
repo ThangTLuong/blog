@@ -129,8 +129,8 @@ module.exports = {
       order: [["date_time", "DESC"]],
       limit: 60,
       include: [
-        { model: Text },
-        { model: Media },
+        { model: Text, required: false },
+        { model: Media, required: false },
         {
           model: User,
           attributes: ["user_id", "username", "user_handle"],
@@ -144,7 +144,6 @@ module.exports = {
         status.Ok(req, res, posts);
       })
       .catch((err) => {
-        console.log(err);
         status.InternalServerError(req, res, err);
       });
   },
@@ -152,18 +151,18 @@ module.exports = {
   loadText: (req, res) => {
     const baseQuery = {
       order: [["date_time", "DESC"]],
-      where: {
-        "$media.post_id$": null,
-      },
-      limit: 60,
       include: [
-        {
-          model: Text,
-          required: true,
-        },
         {
           model: Media,
           required: false,
+          association: "media",
+          where: {
+            post_id: null,
+          },
+        },
+        {
+          model: Text,
+          required: true,
         },
         {
           model: User,
@@ -171,14 +170,25 @@ module.exports = {
           attributes: ["user_id", "username", "user_handle"],
         },
       ],
+      limit: 60,
       distinct: true,
     };
 
-    getPosts(baseQuery)
+    // getPosts(baseQuery)
+    //   .then((posts) => {
+    //     status.Ok(req, res, posts);
+    //   })
+    //   .catch((err) => {
+    //     status.InternalServerError(req, res, err);
+    //   });
+
+    Post.findAll(baseQuery)
       .then((posts) => {
+        console.log(posts);
         status.Ok(req, res, posts);
       })
       .catch((err) => {
+        console.log(err);
         status.InternalServerError(req, res, err);
       });
   },
