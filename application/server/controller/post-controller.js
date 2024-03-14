@@ -129,7 +129,7 @@ module.exports = {
       order: [["date_time", "DESC"]],
       limit: 60,
       include: [
-        { model: Text, required: true },
+        { model: Text, required: false },
         { model: Media, required: false },
         {
           model: User,

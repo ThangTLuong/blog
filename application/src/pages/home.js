@@ -147,7 +147,7 @@ const Home = () => {
                         time_posted: post.date_time,
                       }}
                     >
-                      <p className="post-text-area">{post.text.text}</p>
+                      <p className="post-text-area">{post.text?.text}</p>
                     </GetElement>
                   </div>
                 </div>
