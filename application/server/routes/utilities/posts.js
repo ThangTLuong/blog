@@ -20,11 +20,11 @@ router.get('/', (req, res) => {
   // fetch posts with text && media, or just media
   // If media is false
   // fetch posts with only text
-  if (media === 'true') {
-    
-  } else {
-
-  }
+  // if (media === 'true') {
+  //   post.loadPost(req, res);
+  // } else {
+  //   post.loadPost(req, res);
+  // }
 })
 
 // Load posts for user profiles

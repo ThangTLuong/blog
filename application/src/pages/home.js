@@ -12,7 +12,7 @@ const useFetchPost = () => {
   useEffect(() => {
     let isMounted = true;
 
-    fetchPosts()
+    fetchPosts("true")
       .then((fetchedPosts) => {
         if (isMounted) {
           fetchedPosts.forEach((post) => {
@@ -28,7 +28,6 @@ const useFetchPost = () => {
       .catch((err) => {
         if (isMounted) {
           alert("Couldn't load posts.");
-          console.log(err);
           setIsLoading(false);
         }
       });
