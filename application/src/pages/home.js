@@ -97,7 +97,7 @@ const Home = () => {
                         time_posted: post.date_time,
                       }}
                     >
-                      <p className="post-text-area">{post.text.text}</p>
+                      <p className="post-text-area">{post.text?.text}</p>
                       <MediaDisplay media={parseMedia(post.medias)} />
                     </GetElement>
                   </div>

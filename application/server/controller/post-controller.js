@@ -81,7 +81,7 @@ module.exports = {
     let newPostInstance;
 
     const basePost = {
-      user_id: 1,
+      user_id: user_id,
       date_time: new Date(),
     };
 
@@ -92,21 +92,29 @@ module.exports = {
     Post.create(post)
       .then((newPost) => {
         newPostInstance = newPost;
+        const promises = [];
 
-        return Text.create({
-          post_id: newPost.post_id,
-          text,
-        });
-      })
-      .then(() => {
-        const mediaPromises = media.map((mediaContent) => {
-          return Media.create({
-            post_id: newPostInstance.post_id,
-            media: mediaContent.buffer,
+        if (text) {
+          const textPromise = Text.create({
+            post_id: newPost.post_id,
+            text,
           });
-        });
 
-        return Promise.all(mediaPromises);
+          promises.push(textPromise);
+        }
+
+        if (media && media.length > 0) {
+          const mediaPromises = media.map((mediaContent) => {
+            return Media.create({
+              post_id: newPost.post_id,
+              media: mediaContent.buffer,
+            });
+          });
+
+          promises.push(...mediaPromises);
+        }
+
+        return Promise.all(promises);
       })
       .then(() => {
         const like = Like.create({ post_id: newPostInstance.post_id });
