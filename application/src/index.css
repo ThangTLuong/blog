@@ -1,14 +1,20 @@
+@config '../tailwind.config.js';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
   background-color: rgb(55,55,55);
-  color: antiquewhite;
-}
-
-#main-section {
-  background-color: rgb(100,100,100);
-  margin-top: 5em;
+  margin: 0;
 }
 
 .center {
+  margin-top: 1em;
+  margin-left: 1em;
+}
+
+.form-center {
   padding: 1em;
   width: 30em;
   margin: auto;
@@ -22,3 +28,84 @@ body {
   border-top: 3px solid rgb(255, 90, 90);
   border-radius: 5px;
 }
+
+.form {
+  background-color: rgb(100,100,100);
+  margin-top: 5em;
+}
+
+.login-form, .register-form {
+  display: flex;
+  flex-flow: column;
+}
+
+nav[id="navbar"] {
+  background-color: rgb(165, 165, 165);
+  height: 80px;
+  border-radius: 0 0 5px 5px;
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+nav div {
+  height: 80%;
+  width: 100%;
+}
+
+/* .nav-left, .nav-right {
+  
+} */
+
+.nav-left, .nav-right, .nav-fill {
+  text-align: center;
+  line-height: 5em;
+  height: 100%;
+}
+
+.nav-left {
+  width: 20%;
+}
+
+.nav-right {
+  display: flex;
+  width: 40%;
+}
+
+.nav-fill {
+  display: flex;
+}
+
+.right-option {
+  height: 100%;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.center-align {
+  height: 45px;
+  margin-top: 1rem;
+}
+
+.nav-submit {
+  background-color: rgb(207, 175, 70);
+}
+
+.dropdown-menu {
+  display: none;
+}
+
+.btn-group:hover .dropdown-menu {
+  display: block;
+  top: 2.5em;
+}
+
+#upload, #profile {
+  width: 50%;
+}
+
+.border-radius-5 {
+  border-radius: 5px;
+}
+ 

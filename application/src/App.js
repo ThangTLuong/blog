@@ -1,11 +1,30 @@
-import React, { useState } from "react";
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import Nav from "./components/nav";
-import "../../application/server/static/stylesheets/nav.css"
+import ProtectedRoute from "./services/protectedRoute";
+
+import Home from "./pages/home";
+import Register from "./pages/registration";
+import Login from "./pages/login";
+import Upload from "./pages/upload";
+import Profile from "./pages/profile";
 
 function App() {
   return (
-    <Nav />
+    <div>
+      <Router>
+        <Nav />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/registration" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/upload" element={<Upload />} /> 
+          <Route path="/profile/:username" element={<Profile />} />
+          <Route path="/logout" element={<ProtectedRoute element={Home} />} />
+        </Routes>
+      </Router>
+    </div>
   );
 }
 
