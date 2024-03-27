@@ -92,6 +92,17 @@ nav div {
   background-color: rgb(207, 175, 70);
 }
 
+#strengthDiv{
+  display: none;
+}
+
+#strengthDivBar{
+  display: none;
+  background: red;
+  visibility: visible;
+  width: 33%;
+}
+
 .dropdown-menu {
   display: none;
 }
@@ -108,4 +119,3 @@ nav div {
 .border-radius-5 {
   border-radius: 5px;
 }
- 
