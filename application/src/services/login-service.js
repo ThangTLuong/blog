@@ -1,4 +1,4 @@
-function login(state) {
+const login = (state) => {
   const { email, password } = state;
 
   fetch("/login", {

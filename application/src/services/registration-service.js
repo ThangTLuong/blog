@@ -1,4 +1,4 @@
-function registration(state) {
+const registration = (state) => {
   const { email, username, password, rePassword } = state;
 
   fetch("/registration", {

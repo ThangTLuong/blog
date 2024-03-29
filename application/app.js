@@ -4,7 +4,6 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const cors = require('cors');
-const isAuth = require("./server/middleware/is-auth");
 
 require("dotenv").config();
 
@@ -29,21 +28,9 @@ app.use(
   })
 );
 
-const root = require("./server/routes/root");
-const register = require("./server/routes/register");
-const login = require("./server/routes/login");
-const sessionCheck = require("./server/routes/session-check");
-const logout = require("./server/routes/logout");
-const upload = require("./server/routes/upload");
-const profile = require("./server/routes/profile");
+const route = require("./server/routes");
 
-app.use("/", root);
-app.use("/registration", register);
-app.use("/login", login);
-app.use("/session-check", sessionCheck);
-app.use("/logout", logout)
-app.use("/upload", upload);
-app.use("/profile", profile);
+app.use("/api", route);
 
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}`);

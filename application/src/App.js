@@ -10,7 +10,7 @@ import Login from "./pages/login";
 import Upload from "./pages/upload";
 import Profile from "./pages/profile";
 
-function App() {
+const App = () => {
   return (
     <Router>
       <Nav />

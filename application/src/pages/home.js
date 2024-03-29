@@ -1,6 +1,6 @@
 import React from "react";
 
-function Home() {
+const Home = () => {
   return (
     <div id="body">
       <section id="main-section" className="form form-center round-edges">
