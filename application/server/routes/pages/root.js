@@ -1,8 +1,9 @@
 const express = require("express");
+const status = require("../../status");
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  res.sendStatus(200);
+  status.Ok(req, res);
 });
 
 module.exports = router;
