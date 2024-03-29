@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 
 function Nav() {
   const [auth, setAuth] = useState(() => {
@@ -14,7 +13,7 @@ function Nav() {
           setAuth(true);
           res.json()
             .then((data) => {
-              setUsername(data.username);
+              setUsername(data);
             });
         }
       });

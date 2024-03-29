@@ -12,19 +12,17 @@ import Profile from "./pages/profile";
 
 function App() {
   return (
-    <div>
-      <Router>
-        <Nav />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/registration" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/upload" element={<Upload />} /> 
-          <Route path="/profile/:username" element={<Profile />} />
-          <Route path="/logout" element={<ProtectedRoute element={Home} />} />
-        </Routes>
-      </Router>
-    </div>
+    <Router>
+      <Nav />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/registration" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/upload" element={<ProtectedRoute element={Upload} />} /> 
+        <Route path="/profile/:username" element={<ProtectedRoute element={Profile} />} />
+        <Route path="/logout" element={<ProtectedRoute element={Home} />} />
+      </Routes>
+    </Router>
   );
 }
 

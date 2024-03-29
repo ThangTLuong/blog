@@ -97,7 +97,7 @@ class Register extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id="body">
         <form className="form form-center round-edges" action="/login" method="POST" onSubmit={this.submit}>
           <div className="register-form">
             <div className="input-group form-floating mb-3">
