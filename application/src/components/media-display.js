@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import "./styles/media-display.css";
 
 const LeftDisplayContainer = ({ children }) => {
   return <div className="left-display-container">{children}</div>;
@@ -8,9 +9,13 @@ const RightDisplayContainer = ({ children }) => {
   return <div className="right-display-container">{children}</div>;
 };
 
-const MediaDisplay = ({ media }) => {
+const MediaDisplay = ({ media, rawFiles, onMediaChange }) => {
   const leftDisplay = [];
   const rightDisplay = [];
+
+  useEffect(() => {
+    onMediaChange(rawFiles);
+  }, [media, rawFiles, onMediaChange]);
 
   media.forEach((item, index) => {
     index % 2 === 0 ? leftDisplay.push(item) : rightDisplay.push(item);

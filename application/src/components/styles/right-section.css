@@ -1,0 +1,17 @@
+.right-section {
+  display: flex;
+  border-left: 2px solid gray;
+  background: linear-gradient(to left, rgb(55,55,55), gray);
+  width: 660px;
+}
+
+.right-options {
+  min-width: 15em;
+  max-width: 15em;
+}
+
+.empty-right-side {
+  min-width: 0px;
+  width: 100%;
+  max-width: 600px;
+}

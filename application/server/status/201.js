@@ -1,5 +1,5 @@
 const Created = (req, res, msg) => {
-  if (msg) res.send(201).json(msg);
+  if (msg) res.status(201).json(msg);
   else res.sendStatus(201);
 }
 

@@ -1,23 +1,54 @@
-import React from "react";
+import React, { useState } from "react";
+import "./styles/home.css";
 
 const Home = () => {
+  const [mediaMinHeight, setMediaMinHeight] = useState(400);
+  const [textsMinHeight, setTextsMinHeight] = useState(250);
+
+  const showMoreMedia = () => {
+    setMediaMinHeight((prevState) => prevState + 400);
+  };
+
+  const showMoreTexts = () => {
+    setTextsMinHeight((prevState) => prevState + 250);
+  };
+
   return (
     <div id="body">
-      <section id="main-section" className="form form-center round-edges">
-        <h1>Thang Luong</h1> 
-        <div className="divider"></div>
-        <p>I am an aspiring Software Engineer dipping my toes into Web Development.</p>
-        <ul>
-          <li>https://github.com/ThangTLuong</li>
-          <li>https://www.linkedin.com/in/thangtluong/</li>
-          <li>2023 Graduate</li>
-          <ul> 
-            <li>3.9/4.0</li>
-          </ul>
-        </ul>
-      </section>
+      <div className="posts-container">
+        <div
+          className="media-container"
+          style={{ minHeight: `${mediaMinHeight}px` }}
+        >
+          {Array.from({ length: 12 * 10 }).map((_, index) => (
+            <div className="media-item" key={index}>
+              <div className="item"></div>
+            </div>
+          ))}
+        </div>
+        <div className="button-group">
+          <div className="button" onClick={showMoreMedia}>
+            Show more
+          </div>
+        </div>
+        <div
+          className="texts-container"
+          style={{ minHeight: `${textsMinHeight}px` }}
+        >
+          {Array.from({ length: 12 * 10 }).map((_, index) => (
+            <div className="texts-item" key={index}>
+              <div className="item"></div>
+            </div>
+          ))}
+        </div>
+        <div className="button-group">
+          <div className="button" onClick={showMoreTexts}>
+            Show more
+          </div>
+        </div>
+      </div>
     </div>
   );
-}
+};
 
 export default Home;

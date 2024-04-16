@@ -1,0 +1,159 @@
+.full-height {
+  height: 100%;
+}
+
+.full-width {
+  width: 100%;
+}
+
+nav[id="navbar"] {
+  background-color: rgb(165, 165, 165);
+  height: 80px;
+  border-radius: 0 0 5px 5px;
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+nav div {
+  height: 80%;
+  width: 100%;
+}
+
+.nav-left, .nav-right, .nav-fill {
+  text-align: center;
+  line-height: 5em;
+  height: 100%;
+}
+
+.nav-left {
+  width: 20%;
+}
+
+.nav-right {
+  padding: 0  2%;
+  display: flex;
+  width: 40%;
+}
+
+.nav-fill {
+  display: flex;
+}
+
+.home-button-container {
+  @apply full-height full-width;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-button-overlay {
+  width: 70px;
+  height: 70px;
+}
+
+.home-button {
+  @apply full-height full-width;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-button-icon {
+  width: 50px;
+  height: 50px;
+}
+
+.home-button-overlay:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+}
+
+.right-option {
+  height: 100%;
+}
+
+.nav-upload-container {
+  @apply full-height full-width;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-upload-overlay {
+  height: 70px;
+  width: 70px;
+}
+
+.nav-upload-icon {
+  margin-bottom: 15px;
+  height: 50px;
+  width: 50px;
+}
+
+.nav-upload-overlay:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+}
+
+.nav-profile-container {
+  @apply full-height full-width;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-profile-overlay {
+  transform-style: preserve-3d;
+  height: 60px;
+  width: 60px;
+}
+
+.nav-profile-icon {
+  transform: translateZ(-1px);
+  border-radius: 50%;
+  margin-bottom: 30px;
+  height: 60px;
+  width: 60px;
+}
+
+.nav-profile-overlay:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+}
+
+.nav-profile-dropdown {
+  position: relative;
+}
+
+.nav-profile-dropdown:hover .nav-profile-dropdown-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: auto;
+}
+
+.nav-profile-dropdown-content {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  position: absolute;
+  margin-top: 180px;
+  display: none;
+  height: auto;
+  width: auto;
+  z-index: 1;
+}
+
+.nav-profile-dropdown-item {
+  @apply full-height full-width;
+  line-height: 40px;
+}
+
+.nav-profile-dropdown-item:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+.nav-submit {
+  background-color: rgb(207, 175, 70);
+}

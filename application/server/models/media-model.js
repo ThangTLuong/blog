@@ -11,7 +11,7 @@ module.exports = (sequelize, Sequelize) => {
       allowNull: false,
     },
     media: {
-      type: Sequelize.BLOB,
+      type: Sequelize.BLOB("long"),
       allowNull: false,
     },
   });

@@ -9,11 +9,12 @@ require("dotenv").config();
 
 const PORT = process.env.PORT || 3001;
 
-const db = require('./server/models');
-db.sequelize.sync()
+const db = require("./server/models");
+db.sequelize.sync();
 
-app.use(morgan('dev'));
+app.use(morgan("dev"));
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(cookieParser());
 
