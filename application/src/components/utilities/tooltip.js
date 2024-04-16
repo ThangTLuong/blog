@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./styles/tooltip.css";
 
 const getTooltipStyle = (direction) => {
   const spacing = 8;

@@ -1,0 +1,16 @@
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip {
+  position: absolute;
+  background-color: rgb(0, 0, 0, 0.8);
+  color: white;
+  padding: 10px;
+  border-radius: 4px;
+  z-index: 10;
+  width: auto;
+  opacity: 1;
+  white-space: nowrap;
+}

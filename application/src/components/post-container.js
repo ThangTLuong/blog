@@ -2,33 +2,25 @@ import React from "react";
 
 import { PostContainer, PostMetadata, Post, PostText, PostMedia, PostStats } from "./upload/base-post";
 
-const Container = ({ children }) => {
+const Container = ({ userData, children }) => {
+  const { username, user_handle, time_posted } = userData;
+
   return (
     <PostContainer>
-      <PostMetadata />
-      <Post>
-        {children}
-      </Post>
+      <PostMetadata metaData={{ username, user_handle, time_posted }} />
+      <Post>{children}</Post>
       <PostStats />
     </PostContainer>
   );
-}
+};
 
-const GetElement = ({ isTextVisible, isMediaVisible, children }) => {
+const GetElement = ({ isTextVisible, isMediaVisible, userData, children }) => {
   const [postText, postMedia] = React.Children.toArray(children);
 
   return (
-    <Container>
-      {isTextVisible && 
-      <PostText>
-        { postText }
-      </PostText>
-      }
-      {isMediaVisible && 
-      <PostMedia>
-        { postMedia }
-      </PostMedia>
-      }
+    <Container userData={userData}>
+      {isTextVisible && <PostText>{postText}</PostText>}
+      {isMediaVisible && <PostMedia>{postMedia}</PostMedia>}
     </Container>
   );
 };

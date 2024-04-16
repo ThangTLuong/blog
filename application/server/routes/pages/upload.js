@@ -1,10 +1,10 @@
 const express = require("express");
-const isAuth = require("../../middleware/is-auth");
-const status = require("../../status");
 const router = express.Router();
+const status = require("../../status");
+const isAuth = require("../../middleware/is-auth");
 
 router.get("/", isAuth, (req, res) => {
-  status.Ok(req, res);
+  status.Ok(req, res, req.session);
 });
 
 module.exports = router;

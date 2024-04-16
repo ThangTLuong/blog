@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import "./styles/nav.css";
 
 import home from "../resources/home.png";
 import upload from "../resources/upload/upload.png";
@@ -15,7 +16,7 @@ const Nav = () => {
       if (res.status === 200) {
         setAuth(true);
         res.json().then((data) => {
-          setUsername(data);
+          setUsername(data.username);
         });
       }
     });
