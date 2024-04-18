@@ -1,5 +1,5 @@
 import React from "react";
-import { registration } from "../services/registration-service";
+import registration from "../services/registration-service";
 import "./styles/registration.css";
 class Register extends React.Component {
   constructor(props) {

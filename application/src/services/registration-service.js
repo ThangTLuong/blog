@@ -1,21 +1,43 @@
-const registration = (state) => {
+// const registration = (state) => {
+//   const { email, username, password, rePassword } = state;
+
+//   fetch("/registration", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify({ email, username, password, rePassword }),
+//   }).then((data) => {
+//     if (data.status === 201) {
+//       window.location.replace("/login");
+//     } else if (data.status === 409) {
+//       alert("Email already exists");
+//     } else if (data.status === 500){
+//       //
+//     }
+//   });
+// }
+
+export default async function registration(state) {
   const { email, username, password, rePassword } = state;
 
-  fetch("/registration", {
+  const response = await fetch("/registration", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ email, username, password, rePassword }),
-  }).then((data) => {
-    if (data.status === 201) {
-      window.location.replace("/login");
-    } else if (data.status === 409) {
-      alert("Email already exists");
-    } else if (data.status === 500){
-      //
-    }
   });
-}
 
-export { registration };
+  switch (response.status) {
+    case 201:
+      window.location.replace("/login");
+      break;
+    case 409:
+      alert("Email already exists");
+      break;
+    default:
+      alert("Internal Server Error");
+      break;
+  }
+}
