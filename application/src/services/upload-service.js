@@ -38,12 +38,12 @@ export default async function upload(state) {
   //   }
   // });
 
-  const response = await fetch("/posts", {
+  const res = await fetch("/posts", {
     method: "POST",
     body: fd,
   });
 
-  switch (response.status) {
+  switch (res.status) {
     case 201:
       window.location.replace("/");
       break;

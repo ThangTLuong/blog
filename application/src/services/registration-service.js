@@ -21,7 +21,7 @@
 export default async function registration(state) {
   const { email, username, password, rePassword } = state;
 
-  const response = await fetch("/registration", {
+  const res = await fetch("/registration", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -29,7 +29,7 @@ export default async function registration(state) {
     body: JSON.stringify({ email, username, password, rePassword }),
   });
 
-  switch (response.status) {
+  switch (res.status) {
     case 201:
       window.location.replace("/login");
       break;
