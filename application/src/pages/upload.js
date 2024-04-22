@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Tooltip from "../components/utilities/tooltip";
 import GetElement from "../components/post-container";
 import Dropzone from "../components/upload/drop-zone";
-import { upload } from "../services/upload-service";
+import upload from "../services/upload-service";
 import "./styles/upload.css";
 
 import UploadOptions from "../components/upload/upload-options";

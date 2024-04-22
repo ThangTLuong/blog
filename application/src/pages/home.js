@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import GetElement from "../components/post-container";
 import "./styles/home.css";
 import MediaDisplay from "../components/upload/media-display";
-import { fetchPosts } from "../services/fetch-posts";
+import fetchPosts from "../services/fetch-posts";
 
 const useFetchPost = () => {
   const [mediaPosts, setMediaPosts] = useState([]);
