@@ -11,7 +11,7 @@ import Login from "./pages/login";
 import Upload from "./pages/upload";
 import Profile from "./pages/profile";
 
-const App = () => {
+export default function App() {
   return (
     <Router>
       <Nav />
@@ -30,5 +30,3 @@ const App = () => {
     </Router>
   );
 };
-
-export default App;
