@@ -6,9 +6,7 @@ import upload from "../resources/upload/upload.png";
 import avatar from "../resources/default avatar.jpg";
 
 const Nav = () => {
-  const [auth, setAuth] = useState(() => {
-    return false;
-  });
+  const [auth, setAuth] = useState(false);
   const [username, setUsername] = useState("");
 
   useEffect(() => {
