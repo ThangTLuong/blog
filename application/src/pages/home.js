@@ -4,16 +4,47 @@ import "./styles/home.css";
 import MediaDisplay from "../components/upload/media-display";
 import fetchPosts from "../services/fetch-posts";
 
-const useFetchPost = () => {
+function useFetchPost() {
   const [mediaPosts, setMediaPosts] = useState([]);
   const [textPosts, setTextPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  // useEffect(() => {
+  //   let isMounted = true;
+
+  //   fetchPosts()
+  //     .then((fetchedPosts) => {
+  //       if (isMounted) {
+  //         fetchedPosts.forEach((post) => {
+  //           if (post.medias && post.medias.length > 0)
+  //             setMediaPosts((prevState) => [...prevState, post]);
+  //           else {
+  //             setTextPosts((prevState) => [...prevState, post]);
+  //           }
+  //         });
+  //         setIsLoading(false);
+  //       }
+  //     })
+  //     .catch((err) => {
+  //       if (isMounted) {
+  //         alert("Couldn't load posts.");
+  //         console.log(err);
+  //         setIsLoading(false);
+  //       }
+  //     });
+
+  //   return () => {
+  //     isMounted = false;
+  //   };
+  // }, []);
+
   useEffect(() => {
     let isMounted = true;
 
-    fetchPosts()
-      .then((fetchedPosts) => {
+    async function fetchData() {
+      try {
+        const fetchedPosts = await fetchPosts();
+
         if (isMounted) {
           fetchedPosts.forEach((post) => {
             if (post.medias && post.medias.length > 0)
@@ -24,14 +55,16 @@ const useFetchPost = () => {
           });
           setIsLoading(false);
         }
-      })
-      .catch((err) => {
+      } catch (err) {
         if (isMounted) {
           alert("Couldn't load posts.");
           console.log(err);
           setIsLoading(false);
         }
-      });
+      }
+    }
+
+    fetchData();
 
     return () => {
       isMounted = false;
@@ -41,32 +74,32 @@ const useFetchPost = () => {
   return { mediaPosts, textPosts, isLoading };
 };
 
-const Home = () => {
+export default function Home (){
   const [maxMediaDisplay, setMaxMediaDisplay] = useState(3);
   const [maxTextsDisplay, setMaxTextsDisplay] = useState(3);
   const { mediaPosts, textPosts, isLoading } = useFetchPost();
 
-  const showMoreMedia = () => {
+  const showMoreMedia = async () => {
     if (maxMediaDisplay + 3 <= mediaPosts.length)
       setMaxMediaDisplay((prevState) => prevState + 3);
   };
 
-  const showLessMedia = () => {
+  const showLessMedia = async () => {
     if (maxMediaDisplay - 3 >= 0)
       setMaxMediaDisplay((prevState) => prevState - 3);
   };
 
-  const showMoreTexts = () => {
+  const showMoreTexts = async () => {
     if (maxTextsDisplay + 3 <= textPosts.length)
       setMaxTextsDisplay((prevState) => prevState + 3);
   };
 
-  const showLessTexts = () => {
+  const showLessTexts = async () => {
     if (maxTextsDisplay - 3 >= 0)
       setMaxTextsDisplay((prevState) => prevState - 3);
   };
 
-  const parseMedia = (medias) => {
+  const parseMedia =  (medias) => {
     const media = [];
 
     medias.forEach((mediaObj) => {
@@ -185,5 +218,3 @@ const Home = () => {
     </div>
   );
 };
-
-export default Home;
