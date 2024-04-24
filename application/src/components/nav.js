@@ -5,7 +5,7 @@ import home from "../resources/home.png";
 import upload from "../resources/upload/upload.png";
 import avatar from "../resources/default avatar.jpg";
 
-const Nav = () => {
+export default function Nav() {
   const [auth, setAuth] = useState(false);
   const [username, setUsername] = useState("");
 
@@ -26,15 +26,15 @@ const Nav = () => {
     };
   }, [auth]);
 
-  const handleLogout = () => {
-    fetch("/logout")
-      .then((res) => {
-        window.location.replace("/");
-      })
-      .catch((err) => {
-        //
-      });
-  };
+  async function handleLogout() {
+    try {
+      // Probably want to do something with the `res` since logging out could fail
+      const res = await fetch('/logout');
+      window.location.replace('/');
+    } catch (err) {
+      //
+    }
+  }
 
   return (
     <nav id="navbar">
@@ -118,5 +118,3 @@ const Nav = () => {
     </nav>
   );
 };
-
-export default Nav;
