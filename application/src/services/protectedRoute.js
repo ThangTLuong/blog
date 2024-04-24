@@ -36,19 +36,19 @@ import { useNavigate } from "react-router-dom";
 //   return <Component {...rest} />;
 // }
 
-export default async function ProtectedRoute({ element: Component, ...rest }) {
+export default function ProtectedRoute({ element: Component, ...rest }) {
   const navigate = useNavigate();
   const [auth, setAuth] = useState(false);
 
   useEffect(() => {
     const page = window.location.pathname;
     let isMounted = true;
-  
+
     const fetchData = async () => {
       try {
         const res = await fetch(page);
         if (!isMounted) return; // Handle unmounted component
-  
+
         if (res.status === 401) {
           setAuth(false);
           // alert("Permission Denied\nPlease log in");
@@ -62,9 +62,9 @@ export default async function ProtectedRoute({ element: Component, ...rest }) {
         navigate("/");
       }
     };
-  
+
     fetchData();
-  
+
     return () => {
       isMounted = false;
     };
