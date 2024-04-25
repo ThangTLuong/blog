@@ -18,6 +18,8 @@
 //   });
 // };
 
+// export default fetchPosts;
+
 export default async function fetchPosts() {
   try {
     const res = await fetch("/posts", {
