@@ -1,4 +1,4 @@
-const Ok = (req, res, msg) => {
+async function Ok(req, res, msg) {
   if (msg) res.status(200).json(msg);
   else res.sendStatus(200);
 }
