@@ -27,7 +27,7 @@ export default function Nav() {
     return () => {
       isMounted = false;
     };
-  }, [auth]);
+  }, []);
 
   async function handleLogout() {
     try {
