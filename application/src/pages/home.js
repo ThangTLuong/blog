@@ -72,34 +72,34 @@ function useFetchPost() {
   }, []);
 
   return { mediaPosts, textPosts, isLoading };
-};
+}
 
-export default function Home (){
+export default function Home() {
   const [maxMediaDisplay, setMaxMediaDisplay] = useState(3);
   const [maxTextsDisplay, setMaxTextsDisplay] = useState(3);
   const { mediaPosts, textPosts, isLoading } = useFetchPost();
 
-  const showMoreMedia = async () => {
+  const showMoreMedia = () => {
     if (maxMediaDisplay + 3 <= mediaPosts.length)
       setMaxMediaDisplay((prevState) => prevState + 3);
   };
 
-  const showLessMedia = async () => {
+  const showLessMedia = () => {
     if (maxMediaDisplay - 3 >= 0)
       setMaxMediaDisplay((prevState) => prevState - 3);
   };
 
-  const showMoreTexts = async () => {
+  const showMoreTexts = () => {
     if (maxTextsDisplay + 3 <= textPosts.length)
       setMaxTextsDisplay((prevState) => prevState + 3);
   };
 
-  const showLessTexts = async () => {
+  const showLessTexts = () => {
     if (maxTextsDisplay - 3 >= 0)
       setMaxTextsDisplay((prevState) => prevState - 3);
   };
 
-  const parseMedia =  (medias) => {
+  const parseMedia = (medias) => {
     const media = [];
 
     medias.forEach((mediaObj) => {

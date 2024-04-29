@@ -1,4 +1,4 @@
-export default async function formatNumber(number) {
+export default function formatNumber(number) {
   const formats = [
     { limit: 1000, multiplier: 1, unit: "" },
     { limit: 1000000, multiplier: 1000, unit: "K" },

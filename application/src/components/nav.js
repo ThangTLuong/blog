@@ -4,6 +4,7 @@ import "./styles/nav.css";
 import home from "../resources/home.png";
 import upload from "../resources/upload/upload.png";
 import avatar from "../resources/default avatar.jpg";
+import fetchSessions from "../services/fetch-sessions";
 
 export default function Nav() {
   const [auth, setAuth] = useState(false);
@@ -12,25 +13,27 @@ export default function Nav() {
   useEffect(() => {
     let isMounted = true;
 
-    fetch("/sessions").then((res) => {
-      if (isMounted && res.status === 200) {
-        setAuth(true);
-        res.json().then((data) => {
-          setUsername(data.username);
-        });
+    async function fetchSession() {
+      const { auth, username } = await fetchSessions();
+
+      if (isMounted) {
+        setAuth(auth);
+        setUsername(username);
       }
-    });
+    }
+
+    fetchSession();
 
     return () => {
       isMounted = false;
     };
-  }, [auth]);
+  }, []);
 
   async function handleLogout() {
     try {
       // Probably want to do something with the `res` since logging out could fail
-      const res = await fetch('/logout');
-      window.location.replace('/');
+      await fetch("/logout");
+      window.location.replace("/");
     } catch (err) {
       //
     }
