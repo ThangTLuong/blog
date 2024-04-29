@@ -32,7 +32,7 @@ export default function Nav() {
   async function handleLogout() {
     try {
       // Probably want to do something with the `res` since logging out could fail
-      const res = await fetch("/logout");
+      await fetch("/logout");
       window.location.replace("/");
     } catch (err) {
       //
