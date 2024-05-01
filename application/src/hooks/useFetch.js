@@ -1,20 +1,25 @@
-export default async function useFetch(link, head, body) {
-  const { method } = link;
-  let res;
+import { useState, useEffect } from "react";
 
-  if (!method) {
-    return new Error("A method was not declared.");
-  }
+export default function useFetch(url) {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  try {
-    if (method === "GET") {
-      res = await fetch(link, head);
-    } else {
-      res = await fetch(link, head, body);
-    }
-  } catch (err) {
-    return new Error(err);
-  }
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(url);
+        const fetchedData = await res.json();
+        setData(fetchedData);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  return res;
+    fetchData();
+  }, [url]);
+
+  return { data, loading, error };
 }
