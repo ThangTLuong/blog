@@ -5,6 +5,7 @@ import home from "../resources/home.png";
 import upload from "../resources/upload/upload.png";
 import avatar from "../resources/default avatar.jpg";
 import fetchSessions from "../services/fetch-sessions";
+import logout from "../services/logout-service";
 
 export default function Nav() {
   const [auth, setAuth] = useState(false);
@@ -28,16 +29,6 @@ export default function Nav() {
       isMounted = false;
     };
   }, []);
-
-  async function handleLogout() {
-    try {
-      // Probably want to do something with the `res` since logging out could fail
-      await fetch("/logout");
-      window.location.replace("/");
-    } catch (err) {
-      //
-    }
-  }
 
   return (
     <nav id="navbar">
@@ -99,7 +90,7 @@ export default function Nav() {
                     <a href="/settings">Settings</a>
                   </div>
                   <div className="nav-profile-dropdown-item">
-                    <a href="/" onClick={handleLogout}>
+                    <a href="/" onClick={logout}>
                       Logout
                     </a>
                   </div>

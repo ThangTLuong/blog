@@ -1,13 +1,9 @@
 export default async function logout() {
   try {
-    const res = await fetch("/logout");
-
-    if (res !== 200) {
-      throw new Error("There was an error logging out");
-    }
-
+    await fetch("/logout");
     window.location.replace("/");
   } catch (err) {
+    console.log(err);
     alert(err);
   }
 }
