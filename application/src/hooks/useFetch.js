@@ -8,13 +8,11 @@ export default function useFetch(url, method = "GET", body = {}) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch(url, {
-          method,
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(body),
-        });
+        const query =
+          method === "GET"
+            ? { method, headers: { "Content-Type": "application/json" } }
+            : { method, headers: { "Content-Type": "application/json" }, body };
+        const res = await fetch(url, query);
         const fetchedData = await res.json();
         setData(fetchedData);
       } catch (error) {
