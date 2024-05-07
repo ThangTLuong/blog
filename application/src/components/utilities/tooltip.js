@@ -1,18 +1,34 @@
 import React, { useState } from "react";
 import "./styles/tooltip.css";
 
-const getTooltipStyle = (direction) => {
+function getTooltipStyle(direction) {
   const spacing = 8;
 
   switch (direction) {
     case "top":
-      return { bottom: `calc(100% + ${spacing}px)`, left: "50%", transform: "translateX(-50%)" };
+      return {
+        bottom: `calc(100% + ${spacing}px)`,
+        left: "50%",
+        transform: "translateX(-50%)",
+      };
     case "right":
-      return { top: "50%", left: `calc(100% + ${spacing}px)`, transform: "translateY(-50%)" };
+      return {
+        top: "50%",
+        left: `calc(100% + ${spacing}px)`,
+        transform: "translateY(-50%)",
+      };
     case "bottom":
-      return { top: `calc(100% + ${spacing}px)`, left: "50%", transform: "translateX(-50%)" };
+      return {
+        top: `calc(100% + ${spacing}px)`,
+        left: "50%",
+        transform: "translateX(-50%)",
+      };
     case "left":
-      return { top: "50%", right: `calc(100% + ${spacing}px)`, transform: "translateY(-50%)" };
+      return {
+        top: "50%",
+        right: `calc(100% + ${spacing}px)`,
+        transform: "translateY(-50%)",
+      };
     default:
       return {};
   }

@@ -1,4 +1,4 @@
-const formatNumber = (number) => {
+export default function formatNumber(number) {
   const formats = [
     { limit: 1000, multiplier: 1, unit: "" },
     { limit: 1000000, multiplier: 1000, unit: "K" },
@@ -13,9 +13,7 @@ const formatNumber = (number) => {
     ) + unit;
 
   return result;
-};
-
-export default formatNumber;
+}
 
 /**
  * number < 1000: return number

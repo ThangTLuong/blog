@@ -6,6 +6,7 @@ const sequelize = new Sequelize(config.DB, config.USER, config.PASSWORD, {
   dialect: config.DIALECT,
 });
 
+sequelize.options.logging = false;
 const db = {};
 
 db.sequelize = sequelize;
@@ -48,6 +49,8 @@ Post.belongsToMany(User, {
   through: Like,
   foreignKey: "post_id",
 });
+Post.hasMany(Like, { foreignKey: "post_id" });
+Like.belongsTo(Post, { foreignKey: "post_id" });
 
 User.belongsToMany(Post, {
   through: Comment,
@@ -57,6 +60,8 @@ Post.belongsToMany(User, {
   through: Comment,
   foreignKey: "post_id",
 });
+Post.hasMany(Comment, { foreignKey: "post_id" });
+Comment.belongsTo(Post, { foreignKey: "post_id" });
 
 User.belongsToMany(Post, {
   through: Repost,
@@ -66,6 +71,8 @@ Post.belongsToMany(User, {
   through: Repost,
   foreignKey: "post_id",
 });
+Post.hasMany(Repost, { foreignKey: "post_id" });
+Repost.belongsTo(Post, { foreignKey: "post_id" });
 
 // Post one to one Text
 Post.hasOne(Text, {

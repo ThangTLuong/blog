@@ -7,7 +7,7 @@ import "./styles/base-post.css";
 const PostContainer = ({ children }) => {
   return (
     <div className="post-container">
-      <div className="post-contents full-height">{children}</div>
+      <div className="post-contents">{children}</div>
     </div>
   );
 };

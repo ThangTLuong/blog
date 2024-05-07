@@ -14,16 +14,20 @@
 .post-contents {
   display: flex;
   flex-direction: column;
+  border: 1px solid rgba(179, 171, 255, 0.3);
 }
 
-.post-metadata-container, .post, .post-stats-container {
-  border: 1px solid rgba(179, 171, 255, 0.3);
+.post-metadata-container {
+  border-bottom: 1px solid rgba(179, 171, 255, 0.3);;
+}
+
+.post-stats-container {
+  border-top: 1px solid rgba(179, 171, 255, 0.3);;
 }
 
 .post-metadata-container {
   padding: 5px;
   padding-bottom: 2.5px;
-  border-bottom: 0;
 }
 
 .post-metadata {
@@ -88,7 +92,9 @@
 }
 
 .post-media {
-  height: 440px;
+  min-height: 100px;
+  height: auto;
+  aspect-ratio: 17.4 / 13;
 }
 
 .post-text + .post-media {
@@ -100,7 +106,6 @@
 }
 
 .post-stats-container {
-  border-top: 0;
   padding: 5px;
 }
 
