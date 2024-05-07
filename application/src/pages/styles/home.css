@@ -29,27 +29,24 @@
 .media-item, 
 .texts-item {
   min-width: 350px;
+  max-width: 500px;
   flex-grow: 1;
-  padding: 20px;
+  padding: 10px;
 }
 
 .media-container,
 .media-item {
-  min-height: 400px;
-  max-height: 400px;
+  min-height: 631px;
 }
 
 .texts-container,
 .texts-item {
   min-height: 250px;
-  max-height: 250px;
 }
 
 .media-item .item,
 .texts-item .item {
   @apply full-height full-width;
-  border-radius: 10px;
-  background-color: aquamarine;
 }
 
 .media-item:hover,
@@ -61,7 +58,6 @@
   @apply full-width;
   border-radius: 0 0 10px 10px;
   height: 70px;
-  margin: 0 auto 5em auto;
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
@@ -84,4 +80,16 @@
 .button-group .button:hover {
   background-color: rgba(179, 171, 255, 1);
   color: rgb(0, 0, 0);
+}
+
+.post-text-area {
+  background-color: transparent;
+}
+
+.post-contents {
+  border-radius: 10px;
+}
+
+.margin {
+  height: 5em;
 }

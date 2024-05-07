@@ -4,33 +4,31 @@ import "./styles/nav.css";
 import home from "../resources/home.png";
 import upload from "../resources/upload/upload.png";
 import avatar from "../resources/default avatar.jpg";
+import fetchSessions from "../services/fetch-sessions";
+import logout from "../services/logout-service";
 
-const Nav = () => {
-  const [auth, setAuth] = useState(() => {
-    return false;
-  });
+export default function Nav() {
+  const [auth, setAuth] = useState(false);
   const [username, setUsername] = useState("");
 
   useEffect(() => {
-    fetch("/sessions").then((res) => {
-      if (res.status === 200) {
-        setAuth(true);
-        res.json().then((data) => {
-          setUsername(data.username);
-        });
-      }
-    });
-  }, [auth]);
+    let isMounted = true;
 
-  const handleLogout = () => {
-    fetch("/logout")
-      .then((res) => {
-        window.location.replace("/");
-      })
-      .catch((err) => {
-        //
-      });
-  };
+    async function fetchSession() {
+      const { auth, username } = await fetchSessions();
+
+      if (isMounted) {
+        setAuth(auth);
+        setUsername(username);
+      }
+    }
+
+    fetchSession();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   return (
     <nav id="navbar">
@@ -92,7 +90,7 @@ const Nav = () => {
                     <a href="/settings">Settings</a>
                   </div>
                   <div className="nav-profile-dropdown-item">
-                    <a href="/" onClick={handleLogout}>
+                    <a href="/" onClick={logout}>
                       Logout
                     </a>
                   </div>
@@ -114,5 +112,3 @@ const Nav = () => {
     </nav>
   );
 };
-
-export default Nav;

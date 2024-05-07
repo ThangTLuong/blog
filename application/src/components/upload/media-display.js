@@ -9,12 +9,17 @@ const RightDisplayContainer = ({ children }) => {
   return <div className="right-display-container">{children}</div>;
 };
 
-const MediaDisplay = ({ media, rawFiles, onMediaChange }) => {
+const MediaDisplay = ({ media, rawFiles = [], onMediaChange = () => {} }) => {
   const leftDisplay = [];
   const rightDisplay = [];
 
   useEffect(() => {
-    onMediaChange(rawFiles);
+    let isMounted = true;
+    if (isMounted) onMediaChange(rawFiles);
+
+    return () => {
+      isMounted = false;
+    };
   }, [media, rawFiles, onMediaChange]);
 
   media.forEach((item, index) => {
