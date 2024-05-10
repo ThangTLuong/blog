@@ -6,7 +6,7 @@ export default function Lobby() {
     <div className="page-container">
       <div className="flex-container">
         <LeftSection></LeftSection>
-        <div class='lobby-display-containter'></div>
+        <div className="lobby-display-containter"></div>
       </div>
     </div>
   );

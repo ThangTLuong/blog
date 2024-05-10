@@ -10,6 +10,7 @@ import Register from "./pages/registration";
 import Login from "./pages/login";
 import Upload from "./pages/upload";
 import Profile from "./pages/profile";
+import Lobby from "./pages/chat-room-lobby";
 
 export default function App() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
           path="/profile/:username"
           element={<ProtectedRoute element={Profile} />}
         />
+        <Route path="/lobby" element={<Lobby />} />
         <Route path="/logout" element={<ProtectedRoute element={Home} />} />
       </Routes>
       <Footer />
