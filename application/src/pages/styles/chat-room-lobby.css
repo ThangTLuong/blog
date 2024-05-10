@@ -1,0 +1,15 @@
+.page-container {
+  height: calc(100vh - 80px);
+  width: 100vw;
+}
+
+.flex-container {
+  height: 100%;
+  width: 100%;
+}
+
+.lobby-left-section {
+  height: 100%;
+  width: 350px;
+  background-color: aqua;
+}
